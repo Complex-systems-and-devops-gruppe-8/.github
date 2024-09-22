@@ -67,6 +67,73 @@ Security is an important concern in the system, and a robust authentication mech
 
 In the future, we've identified areas for further improvement. The introduction of a repository layer will further abstract data access from business logic, while the implementation of a domain model to database model mapper will create a clear separation between how entities are represented in the database and how they're used in business logic. These improvements will enhance the system's modularity and maintainability.
 
+The following is a sequence diagram of the layered architecture.
+
+```mermaid
+sequenceDiagram
+    box Client Side
+        participant C as Client
+    end
+    box API Layer
+        participant R as Resource
+    end
+    box Business Logic Layer
+        participant CT as Controller
+        participant S as Service
+    end
+    box Data Access Layer
+        participant E as Entity
+        participant DB as Database
+    end
+
+    C->>R: HTTP Request
+    R->>CT: Delegate task
+    CT->>S: Invoke business logic
+    S->>E: Access data
+    E->>+DB: Query / Update
+    DB-->>-E: Data
+    E-->>S: Entity data
+    S-->>CT: Result
+    CT-->>R: Response
+    R-->>C: HTTP Response
+```
+
+The next diagram shows our planned domain–database repository abstraction
+
+```mermaid
+sequenceDiagram
+    box Client Side
+        participant C as Client
+    end
+    box API Layer
+        participant R as Resource
+        participant CT as Controller
+    end
+    box Business Logic Layer
+        participant S as Service
+        participant M as Domain to Entity<br/>Mapper
+        participant RL as Repository
+    end
+    box Data Access Layer
+        participant E as Entity
+        participant DB as Database
+    end
+    C->>R: HTTP Request
+    R->>CT: Delegate task
+    CT->>S: Invoke business logic
+    S->>M: Access data
+    M->>RL: Access Data
+    RL->>E: Access data
+    E->>+DB: Query / update
+    DB-->>-E: Data
+    E-->>RL: Entity data
+    RL-->>M: Entity data
+    M -->>S: Domain data
+    S-->>CT: Result
+    CT-->>R: Response
+    R-->>C: HTTP Response
+```
+
 ### Design Decisions
 [Discuss key design decisions and their rationale.]
 
