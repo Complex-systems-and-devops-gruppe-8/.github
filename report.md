@@ -65,13 +65,13 @@
 
 ### Test Plan
 This test plan descripes our current idea of the approach, tools and strategies we are going to be using to ensure the quality and stability of the full-stack application developed using the specified tech stack in this repport for the front and backend. 
-##### Testing opbjectives
+#### Testing opbjectives
 - Ensure application functions correctly across all integrated systems (backend, frontend, database)
 - Validate application security features particularly token mangement and authorization (OIDC)
 - Verify the frontend provides a seamless user experience with state management and responsive design
 - Ensure CI/CD pipelin (Github Actions) operates effectiveely, catching bugs early in the build process
 
-##### Test types and strategies
+#### Test types and strategies
  -  Unit testing (Backend & frontend) 
     - Each backend service (Api endpoints, business logic, token management) will be tested individually
     - Frontend components and utility functions will be tested for correctness using unit testing frameworks like Jest and React Testing Library.
@@ -95,7 +95,7 @@ This test plan descripes our current idea of the approach, tools and strategies 
 
  - Performance Testing
     - To evalute frontend performance we will be using Lighthouse to ensure optimal load times and responsiveness
-##### Enviroment setup for testing
+#### Enviroment setup for testing
 - Local development
   - Tests are run in both the backend and frontend during local development and building to ensure  the application functions correctly across the full stack.
   - Backend tests include unit and integration tests, while frontend tests focus on component and UI logic validation.
@@ -105,12 +105,11 @@ This test plan descripes our current idea of the approach, tools and strategies 
     - Upon successful test completion, the build will proceed, else rollbacks or alerts are triggered.
 
 
-
-[Describe the testing approach and methodologies.]
+ 
 
 ### Results
 At this stage of the project not all test are setup so not many results have been found. But the result of the implemented test help us understand and identify current problems and validate that our new implementations are correct implemented.
-[Summarize the test results and key findings.]
+ 
 
 ## Conclusion
 
