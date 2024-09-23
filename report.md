@@ -27,6 +27,15 @@
 ---
 
 ## Introduction
+In this project the goals is to design and implement the frontend and backend for a program, and manage the program by implementing the principles of DevOps. This program will be a gambling website that will feature games like poker, roulette and coinflip.
+
+The frontend will be implemented using JavaScript frameworks such as React, TypeScript, and Vite, providing a satisfying user experience. The backend will be made with Java/Kotlin with Quarkus, a powerful framework for building Java applications, paired with PostgreSQL for managing the database. The backend will handle core functionality, like game logic, user authentication, and secure data management via OIDC for token-based authentication.
+
+An important part of this project is to ensure the use of DevOps practices, to ensure that all components of the project are developed and deployed with automation and continous integration. Docker will be used for containerization, while GitHub and GitHub Actions will handle version control, automated testing, and deployment. The goal of this approach is to allow for frequent updates and efficient scaling.
+
+This report will go through the design and implementation of the project, as well as how DevOps tools and methods has been applied currently, and how they will be used in the future. The current report is based on the work that has been done up to September 22, 2024.
+
+
 
 ### Background
 [Brief overview of the project background.]
@@ -76,3 +85,5 @@
 
 ### Future Work
 [Mention any potential future improvements or follow-up work.]
+
+
