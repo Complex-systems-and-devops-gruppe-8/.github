@@ -63,7 +63,7 @@ The frontend of the project is developed using **React**, which is a JavaScript 
 
 In the frontend, we utilize **React Router** for the routing of the application. This allows the user to navigate between different pages without doing a full page reload. This is done by wrapping a `Router` tag around different `Route` tags and specifying what component should be rendered if the user navigates to said routes.
 
-```jsx
+```react
 <Router>
   <Routes>
     <Route path="/" element={<LandingPage />} />
@@ -72,6 +72,8 @@ In the frontend, we utilize **React Router** for the routing of the application.
     <Route path="/blackjack" element={<BlackjackPage />} />
   </Routes>
 </Router>
+
+```
 
 #### Component Structure
 
