@@ -72,6 +72,12 @@
 ## Conclusion
 
 ### Summary
+This project involves the development of a comprehensive gambling website featuring games like poker, roulette, and coinflip. The frontend is built using React, TypeScript, and Vite, ensuring a responsive and engaging user experience. The backend leverages Quarkus with Java/Kotlin and PostgreSQL to handle game logic, user authentication, and secure data management.
+
+A key focus of the project is the integration of DevOps practices, utilizing Docker for containerization and GitHub Actions for continuous integration and deployment. This approach facilitates frequent updates and efficient scaling, ensuring the platform remains robust and adaptable to user needs.
+
+The project also emphasizes security, employing OIDC for token-based authentication, and follows a modular architecture to enhance maintainability and scalability. Comprehensive testing strategies are in place to ensure the quality and stability of the application across all components.
+
 [Summarize the main points of the project.]
 
 ### Future Work
