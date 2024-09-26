@@ -88,19 +88,16 @@ These components are just empty at this point, but functionality will be develop
 
 #### TypeScript Integration
 
-The frontend is also built using **TypeScript**, which enables typing. This is useful to help catch errors during development rather than at runtime. TypeScript is best used by defining **interfaces** and **types** for components’ props and states. This ensures that data passed between components is structured correctly.
+The frontend is also built using **TypeScript**, which enables static type checking. This is useful to help catch errors during development rather than at runtime. TypeScript is best used by defining **interfaces** and **types** for components’ props and states. This ensures that data passed between components is structured correctly.
 
-[EXAMPLES]
-
+ 
 #### Styling with Tailwind CSS
 
-For the styling of the front end, **Tailwind CSS** is used. Tailwind CSS is one of many CSS frameworks that makes it easier to style different components. One of the advantages of Tailwind is that it has built-in responsiveness, making it simple to create a layout that adapts to different screen sizes.
+To style the frontend, **Tailwind CSS** is used. Tailwind CSS is one of many CSS frameworks that makes it easier to style different components. One of the advantages of Tailwind is that it has built-in responsiveness, making it simple to create a layout that adapts to different screen sizes.
 
 #### Build Tool: Vite
 
-As for building the application, we use **Vite**. Vite is a build tool that focuses on the developer experience by enabling hot-reloading, which improves the experience for developers when working on the application.
-
-[EXAMPLES]
+As for building the application, we use **Vite**. This is a build tool that focuses on the developer experience by enabling hot-reloading, which improves the experience for developers when working on the application.
 
 
 ## Test
