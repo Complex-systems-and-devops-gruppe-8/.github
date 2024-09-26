@@ -118,4 +118,9 @@ The project also emphasizes security, employing OIDC for token-based authenticat
 
 By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.
 
+### Short description of project management
+Project management in the context of software development involves coordinating the planning, execution, and delivery of projects to achieve specific goals efficiently. It encompasses the use of various tools and methodologies to manage resources, timelines, and risks effectively.
+
+With the learning objectives in mind, project management ensures that students can apply selected frameworks for both frontend and backend development, implement state management, and set up backend security. It also involves applying package managers, establishing CI/CD pipelines, and utilizing containerization for deployment. Ultimately, project management guides the design and implementation of a full-stack application, integrating all these elements to deliver a cohesive and functional product.
+
 [Mention any potential future improvements or follow-up work.]
