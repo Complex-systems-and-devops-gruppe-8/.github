@@ -13,14 +13,15 @@
 - [Use Cases \& Stories](#use-cases--stories)
 - [Our Use Case \& User Stories](#our-use-case--user-stories)
   - [Main – UC 1.1. Diagram](#main--uc-11-diagram)
-    - [US 1.1](#us-11)
+  - [US 1.1](#us-11)
     - [UC 1.1: Game Selection \& Play](#uc-11-game-selection--play)
       - [Use Case Section Description](#use-case-section-description)
       - [Stakeholders \& Interest](#stakeholders--interest)
       - [Main Success Scenario](#main-success-scenario)
       - [Extensions](#extensions)
     - [US 1.2](#us-12)
-    - [UC 1.2: Game Outcome Processing](#uc-12-game-outcome-processing)
+      - [UC 1.2: Game Outcome Processing](#uc-12-game-outcome-processing)
+  - [Standalone Use Cases](#standalone-use-cases)
     - [UC 1.3: Betting Mechanics](#uc-13-betting-mechanics)
     - [UC 1.4: Backend Game Hosting](#uc-14-backend-game-hosting)
     - [Challenges](#challenges)
@@ -49,7 +50,6 @@ An important part of this project is to ensure the use of DevOps practices, to e
 
 This report will go through the design and implementation of the project, as well as how DevOps tools and methods has been applied currently, and how they will be used in the future. The current report is based on the work that has been done up to September 22, 2024.
 
-
 ### Background
 
 [Brief overview of the project background.]
@@ -70,7 +70,7 @@ This report will go through the design and implementation of the project, as wel
 
 # Use Cases & Stories
 
-**Use Cases** 
+**Use Cases**
 describe the interactions between a user (or another system) and the system itself to achieve a specific goal. They focus on what the system should do and define the steps involved in achieving the user's objectives, including different success and failure scenarios.
 
 **User Stories** are short, simple descriptions of features told from the perspective of the end-user. They typically follow the format: "As a *type of user*, I want *goal* so that *benefit*." User stories help capture user needs and provide a foundation for creating detailed use cases.
@@ -80,11 +80,29 @@ describe the interactions between a user (or another system) and the system itse
 We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **"Game Selection & Play,"** to illustrate the system interactions.
 
 ## Main – UC 1.1. Diagram
-![UC1.1](./UC1.1.png)
+
+```mermaid
+flowchart TD
+    User["fa:fa-user User"] -->|Place Bet| PlaceBet
+    User -->|Play Game| PlayGame
+    User -->|Select Game| SelectGame
+    User -->|Show Outcome| ShowOutcome
+    
+    subgraph GamblingWebsite
+        direction LR
+        PlaceBet(Place Bet)
+        PlayGame(Play Game)
+        SelectGame(Select Game)
+        ShowOutcome(Show Outcome)
+    end
+    
+    PlaceBet -->|Handle transaction| PaymentProvider["fa:fa-credit-card PaymentProvider"]
+    PlayGame -->|Ensure fairness| SystemAdmin["fa:fa-user-shield SystemAdmin"]
+```
 
 The diagram shows the main interactions within the gambling website. The **User** selects games, places bets, plays, and views outcomes. The **Payment Provider** handles transactions, while the **System Admin** ensures game fairness and compliance.
 
-### US 1.1
+## US 1.1
 
 As a **Gambler**:
 
@@ -93,8 +111,6 @@ As a **Gambler**:
 **So that:**
 
 - I can participate in gambling activities seamlessly.
-
----
 
 The primary use case involves enabling users to play a game and place wagers on it. Please note that elements marked as "Example" may not be included in our version of the program due to scope limitations. Subsequent use cases will include brief summaries, as the main flow has yet to be finalized for the sub use cases. All these use cases (including the main one) are **WIP** and will be subject to change.
 
@@ -180,24 +196,26 @@ The primary use case involves enabling users to play a game and place wagers on 
 ---
 
 ### US 1.2
+
 As a gambler:
+
 - I want my winnings to be credited to my account and losses debited immediately after each game so I can track my balance.
 
----
-
-### UC 1.2: Game Outcome Processing
+#### UC 1.2: Game Outcome Processing
 
 - Winnings are credited to the user’s account, and losses are debited.
 - Storing game data for auditing, fairness checks, and regulatory compliance.
 
 ---
 
+## Standalone Use Cases
+
+Use cases without a corresponding user story
+
 ### UC 1.3: Betting Mechanics
 
 - Allowing users to place bets, select stakes, and confirm wagers.
 - Handling different game types (e.g., slots, poker, blackjack, roulette).
-
----
 
 ### UC 1.4: Backend Game Hosting
 
@@ -207,40 +225,50 @@ As a gambler:
 - Storing game data for compliance and auditing.
 - Ensuring high availability, security, and fairness across all hosted games.
 
+---
 
 ### Challenges
+
 [Highlight the challenges encountered during analysis.]
 
 ## Design
 
 ### Architecture
+
 [Overview of the system architecture.]
 
 ### Design Decisions
+
 [Discuss key design decisions and their rationale.]
 
 ## Implementation
 
 ### Technologies Used
+
 [List the technologies and tools used.]
 
 ### Code Structure
+
 [Provide an overview of the code organization and structure.]
 
 ## Test
 
 ### Test Plan
+
 [Describe the testing approach and methodologies.]
 
 ### Results
+
 [Summarize the test results and key findings.]
 
 ## Conclusion
 
 ### Summary
+
 [Summarize the main points of the project.]
 
 ### Future Work
+
 [Mention any potential future improvements or follow-up work.]
 
 
