@@ -10,9 +10,9 @@
     - [Scope](#scope)
   - [Analysis](#analysis)
     - [Requirements](#requirements)
-- [Use Cases \& Stories](#use-cases--stories)
-- [Our Use Case \& User Stories](#our-use-case--user-stories)
-  - [Main – UC 1.1. Diagram](#main--uc-11-diagram)
+  - [Use Cases \& Stories](#use-cases--stories)
+  - [Our Use Case \& User Stories](#our-use-case--user-stories)
+    - [Main – UC 1.1. Diagram](#main--uc-11-diagram)
   - [US 1.1](#us-11)
     - [UC 1.1: Game Selection \& Play](#uc-11-game-selection--play)
       - [Use Case Section Description](#use-case-section-description)
@@ -68,18 +68,18 @@ This report will go through the design and implementation of the project, as wel
 
 [List the functional and non-functional requirements.]
 
-# Use Cases & Stories
+## Use Cases & Stories
 
 **Use Cases**
 describe the interactions between a user (or another system) and the system itself to achieve a specific goal. They focus on what the system should do and define the steps involved in achieving the user's objectives, including different success and failure scenarios.
 
 **User Stories** are short, simple descriptions of features told from the perspective of the end-user. They typically follow the format: "As a *type of user*, I want *goal* so that *benefit*." User stories help capture user needs and provide a foundation for creating detailed use cases.
 
-# Our Use Case & User Stories
+## Our Use Case & User Stories
 
 We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **"Game Selection & Play,"** to illustrate the system interactions.
 
-## Main – UC 1.1. Diagram
+### Main – UC 1.1. Diagram
 
 ```mermaid
 flowchart TD
