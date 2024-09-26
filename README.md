@@ -4,11 +4,10 @@
 
 Backend: 
 - postgreSQL
-- java/kotlin
+- java
 - quarkus
 - REST endpoints
 - Maven
-	-  OIDC for token management
 
 Frontend:
 - Vite
@@ -21,7 +20,8 @@ Project management
 - docker
 - github
 	- github actions
-- deploy backend+db and frontend to ???
+- deploy frontend to netlify
+- deploy backend to azure?
 - markdown for dokumentation
   - mermaid for diagrams
 
