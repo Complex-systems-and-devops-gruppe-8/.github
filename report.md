@@ -1,15 +1,39 @@
-# Complex System and DevOps project report
+# Complex Systems and DevOps: Deliverable 1
+
+**Date:** September 26, 2024
+
+---
+
+## Course Details
+
+**Course Name:** Complex Systems and DevOps  
+**Course Code:** 62582  
+**Semester:** Fall 2024  
+
+---
+
+## Team Members
+
+| Name                         | Student Number    |
+|------------------------------|------------------|
+| **Christoffer Fink**         | *s205449*         |
+| **Kasper Falch Skov**        | *s205429*         |
+| **Johan Søgaard Jørgensen**  | *s224324*         |
+| **Henrik Lynggaard Skindhøj**| *s205464*         |
+| **Kevin Wang Højgaard**      | *s195166*         |
+| **Sebastian Halfdan Lauridsen** | *s215769*     |
+
+[**Link to GitHub Project**](https://github.com/Complex-systems-and-devops-gruppe-8)  
+
+---
 
 ## Table of Contents
 
-- [Complex System and DevOps project report](#complex-system-and-devops-project-report)
+- [Complex Systems and DevOps: Deliverable 1](#complex-systems-and-devops-deliverable-1)
+  - [Course Details](#course-details)
+  - [Team Members](#team-members)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-    - [Background](#background)
-    - [Purpose](#purpose)
-    - [Scope](#scope)
-  - [Analysis](#analysis)
-    - [Requirements](#requirements)
   - [Use Cases \& Stories](#use-cases--stories)
   - [Our Use Case \& User Stories](#our-use-case--user-stories)
     - [Main – UC 1.1. Diagram](#main--uc-11-diagram)
@@ -40,14 +64,19 @@
       - [Styling with Tailwind CSS](#styling-with-tailwind-css)
       - [Build Tool: Vite](#build-tool-vite)
   - [Test](#test)
-    - [Test Plan](#test-plan)
       - [Testing objectives](#testing-objectives)
       - [Test types and strategies](#test-types-and-strategies)
       - [Enviroment setup for testing](#enviroment-setup-for-testing)
     - [Results](#results)
-  - [Conclusion](#conclusion)
     - [Summary](#summary)
     - [Future Work](#future-work)
+      - [Frontend Development](#frontend-development-1)
+      - [Backend Security and Authentication](#backend-security-and-authentication)
+      - [System Architecture and Development](#system-architecture-and-development)
+      - [Package Management](#package-management)
+      - [CI/CD Pipeline Enhancement](#cicd-pipeline-enhancement)
+      - [Containerization and Cloud Services](#containerization-and-cloud-services)
+      - [Full-stack Application Development](#full-stack-application-development)
     - [Short description of project management](#short-description-of-project-management)
 
 ---
@@ -61,24 +90,6 @@ The frontend will be implemented using the JavaScript framework React, paired wi
 An important part of this project is to ensure the use of DevOps practices, to ensure that all components of the project are developed and deployed with automation and continous integration. Docker will be used for containerization, while GitHub and GitHub Actions will handle version control, automated testing, and deployment. The goal of this approach is to allow for frequent updates and efficient scaling.
 
 This report will go through the design and implementation of the project, as well as how DevOps tools and methods has been applied currently, and how they will be used in the future. The current report is based on the work that has been done up to 2024-09-22.
-
-### Background
-
-[Brief overview of the project background.]
-
-### Purpose
-
-[State the purpose of the project.]
-
-### Scope
-
-[Define the scope of the document or project.]
-
-## Analysis
-
-### Requirements
-
-[List the functional and non-functional requirements.]
 
 ## Use Cases & Stories
 
@@ -222,7 +233,7 @@ As a gambler:
 
 ## Standalone Use Cases
 
-Use cases without a corresponding user story
+Use cases without a corresponding user story.
 
 ### UC 1.3: Betting Mechanics
 
@@ -387,11 +398,9 @@ As for building the application, we use **Vite**. This is a build tool that focu
 
 ## Test
 
-### Test Plan
-
-[Describe the testing approach and methodologies.]
 This test plan describes our current approach, tools, and strategies to ensure the quality and stability of the full-stack application developed using the specified tech stack in this report for both the front and backend.
 #### Testing objectives
+
 - Ensure the application functions correctly across all integrated systems (backend, frontend, database).
 - Validate application security features, particularly token management and authorization using JWT.
 - Verify the frontend provides a seamless user experience with state management and responsive design.
@@ -440,8 +449,6 @@ This test plan describes our current approach, tools, and strategies to ensure t
 At this stage of the project, not all tests are set up, so not many results have been found. However, the results of the implemented tests help us understand and identify current problems and validate that our new implementations are correctly implemented.
  
 
-## Conclusion
-
 ### Summary
 This project involves the development of a comprehensive gambling website featuring games like poker, roulette, and coinflip. The frontend is built using React, TypeScript, and Vite, ensuring a responsive and engaging user experience. The backend leverages Quarkus with Java and PostgreSQL to handle game logic, user authentication, and secure data management. Maven is used for project management and build automation, streamlining the development process.
 
@@ -469,7 +476,7 @@ The project will optimize Docker images for smaller sizes and faster build times
 #### Full-stack Application Development 
 Continued development will focus on integrating frontend and backend components seamlessly, with an emphasis on real-time features using WebSockets or Server-Sent Events. The project aims to develop a robust API gateway for managing and securing application interactions.
 
-***
+---
 **By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.**
 
 ### Short description of project management
