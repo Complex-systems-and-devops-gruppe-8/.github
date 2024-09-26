@@ -117,4 +117,5 @@ The project also emphasizes security, employing OIDC for token-based authenticat
     - Develop a robust API gateway for managing and securing microservices.
 
 By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.
+
 [Mention any potential future improvements or follow-up work.]
