@@ -28,12 +28,22 @@
   - [Design](#design)
     - [Architecture](#architecture)
       - [Backend](#backend)
+        - [Core](#core)
+        - [Authentication](#authentication)
+        - [Future plans and improvements](#future-plans-and-improvements)
     - [Design Decisions](#design-decisions)
   - [Implementation](#implementation)
-    - [Technologies Used](#technologies-used)
-    - [Code Structure](#code-structure)
+    - [Frontend Development](#frontend-development)
+      - [Routing](#routing)
+      - [Component Structure](#component-structure)
+      - [TypeScript Integration](#typescript-integration)
+      - [Styling with Tailwind CSS](#styling-with-tailwind-css)
+      - [Build Tool: Vite](#build-tool-vite)
   - [Test](#test)
     - [Test Plan](#test-plan)
+      - [Testing objectives](#testing-objectives)
+      - [Test types and strategies](#test-types-and-strategies)
+      - [Enviroment setup for testing](#enviroment-setup-for-testing)
     - [Results](#results)
   - [Conclusion](#conclusion)
     - [Summary](#summary)
@@ -78,7 +88,7 @@ describe the interactions between a user (or another system) and the system itse
 
 ## Our Use Case & User Stories
 
-We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **"Game Selection & Play,"** to illustrate the system interactions.
+We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **Game Selection & Play,** to illustrate the system interactions.
 
 ### Main – UC 1.1. Diagram
 
