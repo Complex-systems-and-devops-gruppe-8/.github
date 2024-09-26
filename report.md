@@ -48,6 +48,7 @@
   - [Conclusion](#conclusion)
     - [Summary](#summary)
     - [Future Work](#future-work)
+    - [Short description of project management](#short-description-of-project-management)
 
 ---
 
