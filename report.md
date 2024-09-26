@@ -77,21 +77,29 @@ This project involves the development of a comprehensive gambling website featur
 A key focus of the project is the integration of DevOps practices, utilizing Docker for containerization and GitHub Actions for continuous integration and deployment. This approach facilitates frequent updates and efficient scaling, ensuring the platform remains robust and adaptable to user needs. The project emphasizes security through custom token-based authentication and follows a modular architecture to enhance maintainability and scalability. Comprehensive testing strategies are in place to ensure the quality and stability of the application across all components.
 
 ### Future Work
-**Frontend Development:** Future enhancements will focus on applying advanced React patterns and hooks to improve state management and code reliability. The integration of centralized state management solutions will be explored to handle larger applications more efficiently.
+#### Frontend Development
+Future enhancements will focus on applying advanced React patterns and hooks to improve state management and code reliability. The integration of centralized state management solutions will be explored to handle larger applications more efficiently.
 
-**Backend Security and Authentication:** The project will continue to refine its custom token-based authentication system, ensuring robust security measures are in place. This includes setting up HTTPS certificates and configuring SSL/TLS for secure connections, as well as implementing rate limiting and input validation to prevent common web attacks.
+#### Backend Security and Authentication
+The project will continue to refine its custom token-based authentication system, ensuring robust security measures are in place. This includes setting up HTTPS certificates and configuring SSL/TLS for secure connections, as well as implementing rate limiting and input validation to prevent common web attacks.
 
-**System Architecture and Development:** Although the current architecture is based on a single service, future work will explore ways to optimize scalability and maintainability. This includes refining the existing service architecture and exploring efficient communication methods within the system.
+#### System Architecture and Development 
+Although the current architecture is based on a single service, future work will explore ways to optimize scalability and maintainability. This includes refining the existing service architecture and exploring efficient communication methods within the system.
 
-**Package Management:** The project will focus on optimizing dependency management using Maven and npm, ensuring efficient handling of libraries and tools. Proper version control and semantic versioning strategies will be implemented to maintain consistency and reliability.
+#### Package Management
+The project will focus on optimizing dependency management using Maven and npm, ensuring efficient handling of libraries and tools. Proper version control and semantic versioning strategies will be implemented to maintain consistency and reliability.
 
-**CI/CD Pipeline Enhancement:** Enhancements to the CI/CD pipeline will include implementing automated testing at all levels and setting up continuous deployment pipelines for faster releases. Integrating static code analysis tools will further improve code quality and maintainability.
+#### CI/CD Pipeline Enhancement
+Enhancements to the CI/CD pipeline will include implementing automated testing at all levels and setting up continuous deployment pipelines for faster releases. Integrating static code analysis tools will further improve code quality and maintainability.
 
-**Containerization and Cloud Services:** The project will optimize Docker images for smaller sizes and faster build times, ensuring efficient deployment processes. While Kubernetes and serverless architectures are not currently in use, future exploration of these technologies may provide additional benefits.
+#### Containerization and Cloud Services 
+The project will optimize Docker images for smaller sizes and faster build times, ensuring efficient deployment processes. While Kubernetes and serverless architectures are not currently in use, future exploration of these technologies may provide additional benefits.
 
-**Full-stack Application Development:** Continued development will focus on integrating frontend and backend components seamlessly, with an emphasis on real-time features using WebSockets or Server-Sent Events. The project aims to develop a robust API gateway for managing and securing application interactions.
+#### Full-stack Application Development 
+Continued development will focus on integrating frontend and backend components seamlessly, with an emphasis on real-time features using WebSockets or Server-Sent Events. The project aims to develop a robust API gateway for managing and securing application interactions.
 
-By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.
+***
+**By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.**
 
 ### Short description of project management
 Project management in the context of software development involves coordinating the planning, execution, and delivery of projects to achieve specific goals efficiently. It encompasses the use of various tools and methodologies to manage resources, timelines, and risks effectively.
