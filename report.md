@@ -72,55 +72,28 @@
 ## Conclusion
 
 ### Summary
-This project involves the development of a comprehensive gambling website featuring games like poker, roulette, and coinflip. The frontend is built using React, TypeScript, and Vite, ensuring a responsive and engaging user experience. The backend leverages Quarkus with Java/Kotlin and PostgreSQL to handle game logic, user authentication, and secure data management.
+This project involves the development of a comprehensive gambling website featuring games like poker, roulette, and coinflip. The frontend is built using React, TypeScript, and Vite, ensuring a responsive and engaging user experience. The backend leverages Quarkus with Java and PostgreSQL to handle game logic, user authentication, and secure data management. Maven is used for project management and build automation, streamlining the development process.
 
-A key focus of the project is the integration of DevOps practices, utilizing Docker for containerization and GitHub Actions for continuous integration and deployment. This approach facilitates frequent updates and efficient scaling, ensuring the platform remains robust and adaptable to user needs.
-
-The project also emphasizes security, employing OIDC for token-based authentication, and follows a modular architecture to enhance maintainability and scalability. Comprehensive testing strategies are in place to ensure the quality and stability of the application across all components.
-
-[Summarize the main points of the project.]
+A key focus of the project is the integration of DevOps practices, utilizing Docker for containerization and GitHub Actions for continuous integration and deployment. This approach facilitates frequent updates and efficient scaling, ensuring the platform remains robust and adaptable to user needs. The project emphasizes security through custom token-based authentication and follows a modular architecture to enhance maintainability and scalability. Comprehensive testing strategies are in place to ensure the quality and stability of the application across all components.
 
 ### Future Work
-1. Enhance Frontend Development:
-    - Apply advanced React patterns and hooks for efficient state management.
-    - Implement TypeScript generics and advanced type systems for improved code reliability.
-    - Integrate Redux or MobX for centralized state management in larger applications.
+**Frontend Development:** Future enhancements will focus on applying advanced React patterns and hooks to improve state management and code reliability. The integration of centralized state management solutions will be explored to handle larger applications more efficiently.
 
-2. Backend Security and Authentication:
-    - Implement OAuth 2.0 and OpenID Connect (OIDC) for enhanced authentication and authorization.
-    - Set up HTTPS certificates and configure SSL/TLS for secure connections.
-    - Implement rate limiting and input validation to prevent common web attacks.
+**Backend Security and Authentication:** The project will continue to refine its custom token-based authentication system, ensuring robust security measures are in place. This includes setting up HTTPS certificates and configuring SSL/TLS for secure connections, as well as implementing rate limiting and input validation to prevent common web attacks.
 
-3. Complex System Development:
-    - Apply Microservices architecture principles to improve scalability and maintainability.
-    - Implement Event-driven architectures for real-time communication between services.
-    - Use GraphQL for more flexible and efficient API design.
+**System Architecture and Development:** Although the current architecture is based on a single service, future work will explore ways to optimize scalability and maintainability. This includes refining the existing service architecture and exploring efficient communication methods within the system.
 
-4. Package Management:
-    - Optimize dependency management using tools like npm, Yarn, or pnpm.
-    - Implement proper version control and semantic versioning strategies.
-    - Set up private package registries for internal dependencies.
+**Package Management:** The project will focus on optimizing dependency management using Maven and npm, ensuring efficient handling of libraries and tools. Proper version control and semantic versioning strategies will be implemented to maintain consistency and reliability.
 
-5. CI/CD Pipeline Enhancement:
-    - Implement automated testing at all levels (unit, integration, end-to-end).
-    - Set up continuous deployment pipelines for faster releases.
-    - Integrate static code analysis tools for improved code quality.
+**CI/CD Pipeline Enhancement:** Enhancements to the CI/CD pipeline will include implementing automated testing at all levels and setting up continuous deployment pipelines for faster releases. Integrating static code analysis tools will further improve code quality and maintainability.
 
-6. Containerization and Cloud Services:
-    - Optimize Docker images for smaller sizes and faster build times.
-    - Implement Kubernetes for orchestration of containerized applications.
-    - Explore serverless architectures using AWS Lambda or Google Cloud Functions.
+**Containerization and Cloud Services:** The project will optimize Docker images for smaller sizes and faster build times, ensuring efficient deployment processes. While Kubernetes and serverless architectures are not currently in use, future exploration of these technologies may provide additional benefits.
 
-7. Full-stack Application Development:
-    - Design a comprehensive full-stack application integrating frontend and backend components.
-    - Implement real-time features using WebSockets or Server-Sent Events.
-    - Develop a robust API gateway for managing and securing microservices.
+**Full-stack Application Development:** Continued development will focus on integrating frontend and backend components seamlessly, with an emphasis on real-time features using WebSockets or Server-Sent Events. The project aims to develop a robust API gateway for managing and securing application interactions.
 
 By focusing on these areas, the project will align closely with the course objectives, enhancing both the technical capabilities of the application and the skills of the development team.
 
 ### Short description of project management
 Project management in the context of software development involves coordinating the planning, execution, and delivery of projects to achieve specific goals efficiently. It encompasses the use of various tools and methodologies to manage resources, timelines, and risks effectively.
 
-With the learning objectives in mind, project management ensures that students can apply selected frameworks for both frontend and backend development, implement state management, and set up backend security. It also involves applying package managers, establishing CI/CD pipelines, and utilizing containerization for deployment. Ultimately, project management guides the design and implementation of a full-stack application, integrating all these elements to deliver a cohesive and functional product.
-
-[Mention any potential future improvements or follow-up work.]
+With the learning objectives in mind, project management ensures that we can apply selected frameworks for both frontend and backend development, implement state management, and set up backend security. It also involves applying package managers, establishing CI/CD pipelines, and utilizing containerization for deployment. Ultimately, project management guides the design and implementation of a full-stack application, integrating all these elements to deliver a cohesive and functional product.
