@@ -1,0 +1,91 @@
+name: Generate PDFs from Markdown
+
+on:
+  push:
+    paths:
+      - 'report/**.md'
+    branches:
+      - main
+      - dev
+  pull_request:
+    paths:
+      - 'report/**.md'
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  generate-pdfs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 2
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Install tectonic
+        run: |
+          # Install required SSL library and other dependencies
+          # Add repository for libssl1.1
+          sudo add-apt-repository -y ppa:nrbrtx/libssl1
+          sudo apt-get update
+          sudo apt-get install -y libssl1.1
+
+          sudo apt-get install -y wget pkg-config
+
+          sudo apt-get install -y wget
+          wget https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.14.1/tectonic-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+          tar xf tectonic-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+          sudo mv tectonic /usr/local/bin/
+
+          tectonic --version
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            report/**.md
+
+      - name: Create pdf directory if it doesn't exist
+        run: mkdir -p pdf
+
+      - name: Generate individual PDFs for changed files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ "$file" =~ ^report/ && "$file" != "report/report.md" ]]; then
+              echo "Processing $file"
+              filename=$(basename "$file" .md)
+              pandoc "$file" -o "pdf/${filename}.pdf" --pdf-engine tectonic
+            fi
+          done
+
+      - name: Generate combined report
+        working-directory: report
+        run: |
+          cat frontmatter.md introduction.md domain-analysis.md technical-foundation.md backend-development.md frontend-development.md devops-implementation.md conclusion.md > report.md
+          
+          pandoc report.md -o ../pdf/report.pdf --pdf-engine tectonic
+      - name: Commit and push if there are changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add pdf/*.pdf report/report.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update PDFs and report"
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              git push origin HEAD:${{ github.head_ref }}
+            else
+              git push
+            fi
+          fi
