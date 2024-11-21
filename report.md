@@ -1,8 +1,3 @@
-### 3. Technical Foundation
-#### Framework Selection Rationale
-#### Development Environment Setup
-#### Project Structure
-
 ## II. Implementation and DevOps Practices
 
 ### 4. Backend Development
