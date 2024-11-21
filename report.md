@@ -1,8 +1,3 @@
-### 1. Introduction
-#### Project Scope and Objectives
-#### Problem Statement and Solution Overview
-#### Methodology
-
 ## I. Analysis
 
 ### 2. Domain Analysis
