@@ -26,12 +26,21 @@ jobs:
           ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 2
 
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v40
+        with:
+          files: |
+            report/**.md
+
       - name: Install pandoc
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
 
       - name: Install tectonic
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           # Install required SSL library and other dependencies
           # Add repository for libssl1.1
@@ -48,17 +57,13 @@ jobs:
 
           tectonic --version
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v40
-        with:
-          files: |
-            report/**.md
 
       - name: Create pdf directory if it doesn't exist
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: mkdir -p pdf
 
       - name: Generate individual PDFs for changed files
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ "$file" =~ ^report/ && "$file" != "report/report.md" ]]; then
@@ -69,12 +74,14 @@ jobs:
           done
 
       - name: Generate combined report
+        if: steps.changed-files.outputs.any_changed == 'true'
         working-directory: report
         run: |
           cat frontmatter.md introduction.md domain-analysis.md technical-foundation.md backend-development.md frontend-development.md devops-implementation.md conclusion.md > report.md
           
           pandoc report.md -o ../pdf/report.pdf --pdf-engine tectonic
       - name: Commit and push if there are changes
+        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
