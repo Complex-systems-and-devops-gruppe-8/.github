@@ -23,6 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 2
 
       - name: Install pandoc
@@ -73,10 +74,18 @@ jobs:
           cat frontmatter.md introduction.md domain-analysis.md technical-foundation.md backend-development.md frontend-development.md devops-implementation.md conclusion.md > report.md
           
           pandoc report.md -o ../pdf/report.pdf --pdf-engine tectonic
-
       - name: Commit and push if there are changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add pdf/*.pdf report/report.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update PDFs and report" && git push)
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update PDFs and report"
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              git push origin HEAD:${{ github.head_ref }}
+            else
+              git push
+            fi
+          fi
