@@ -7,6 +7,12 @@ on:
     branches:
       - main
       - dev
+  pull_request:
+    paths:
+      - 'report/**.md'
+    branches:
+      - main
+      - dev
   workflow_dispatch:
 
 jobs:
