@@ -6,24 +6,24 @@
 
 ### Course Details
 
-**Course Name:** Complex Systems and DevOps  
-**Course Code:** 62582  
-**Semester:** Fall 2024  
+**Course Name:** Complex Systems and DevOps
+**Course Code:** 62582
+**Semester:** Fall 2024
 
 ---
 
 ### Team Members
 
-| Name                         | Student Number    |
-|------------------------------|------------------|
-| **Christoffer Fink**         | *s205449*         |
-| **Kasper Falch Skov**        | *s205429*         |
-| **Johan Søgaard Jørgensen**  | *s224324*         |
-| **Henrik Lynggaard Skindhøj**| *s205464*         |
-| **Kevin Wang Højgaard**      | *s195166*         |
-| **Sebastian Halfdan Lauridsen** | *s215769*     |
+| Name                            | Student Number |
+|---------------------------------|----------------|
+| **Christoffer Fink**            | *s205449*      |
+| **Kasper Falch Skov**           | *s205429*      |
+| **Johan Søgaard Jørgensen**     | *s224324*      |
+| **Henrik Lynggaard Skindhøj**   | *s205464*      |
+| **Kevin Wang Højgaard**         | *s195166*      |
+| **Sebastian Halfdan Lauridsen** | *s215769*      |
 
-[**Link to GitHub Project**](https://github.com/Complex-systems-and-devops-gruppe-8)  
+[**Link to GitHub Project**](https://github.com/Complex-systems-and-devops-gruppe-8)
 
 ---
 
@@ -93,69 +93,115 @@ II. [Implementation and DevOps Practices](#implementation-and-devops-practices)
    - [Future Improvements](#future-improvements)
    - [Lessons Learned](#lessons-learned)
 
-
 ---
-
 ### 1. Introduction
+
 #### Project Scope and Objectives
+
 #### Problem Statement and Solution Overview
+
 #### Methodology
+
 
 ## I. Analysis
 
 ### 2. Domain Analysis
+
 #### User Stories and Requirements
+
 #### System Architecture Overview
+
 #### Technical Stack Selection
+
 #### Security Requirements
 
 ### 3. Technical Foundation
+
 #### Framework Selection Rationale
+
 #### Development Environment Setup
+
 #### Project Structure
 
 ## II. Implementation and DevOps Practices
 
 ### 4. Backend Development
+
 #### Quarkus Framework Implementation
+
 #### REST API Design with Siren Hypermedia
+
 #### Database Integration
+
 #### Business Logic Implementation
+
 #### Security Implementation
+
 ##### JWT Authentication
+
 ##### Backend Security Measures
+
 #### Testing Strategy
+
 ##### JUnit Implementation
+
 ##### REST-assured Testing
+
 #### OpenAPI Documentation
 
 ### 5. Frontend Development
+
 #### React Application Structure
+
 #### TypeScript Integration
+
 #### Vite Build Tool Implementation
+
 #### State Management
+
 #### Component Architecture
+
 #### Security Features
+
 ##### Token Security Implementation
+
 #### Package Management
 
 ### 6. DevOps Implementation
+
 #### Version Control Practices
+
 ##### Git Workflow
+
 ##### GitHub Integration
+
 #### Continuous Integration/Continuous Deployment
+
 ##### GitHub Actions Configuration
+
 ##### Build Server Setup
+
 ##### Testing Pipeline
+
 #### Containerization
+
 ##### Docker Implementation
+
 ##### Container Registry
+
 #### Cloud Deployment
+
 ##### Google Cloud Setup
+
 ##### Netlify Frontend Deployment
+
 #### Monitoring and Maintenance
 
 ### 7. Conclusion
+
 #### Project Outcomes
+
 #### Future Improvements
+
 #### Lessons Learned
+
