@@ -9,8 +9,6 @@ The backend is the single source of truth in the form of a REST API which the fr
 1. Business logic
     As with any logic handling money or other sensitive data, these operations must be done in an environment where bad actors or clueless users cannot alter the result. Therefore, since we are developing a gambling site, the actual game logic and results are calculated, handled and stored only in the backend. Our backend has API endpoints for playing games for users such as the stateless coin-flip endpoint.
 
-    *Response simplified for brevity*
-
     ```json
    	{
   		"actions": [
@@ -42,17 +40,17 @@ The backend is the single source of truth in the form of a REST API which the fr
     		}
   		],
   		"links": [ { "rel": [ "self" ], "href": "/game/coin-flip" } ]
-	} 
+	}
     ```
-	
-	If the above JSON did not give it away, we use hypermedia to alter and interact with the state of the backend. Exactly how will be discussed later, for now the most important aspect of the request is that we have two endpoints to interact with the coin-flip game. We can either 
 
-		1. Play the game via the POST method, requiring two arguments: whether the user chooses "HEADS" or "TAILS" and the bet amount as a number.
+    *Simplified response listing the actions and links available on `/game/coin-flip`.*
+	
+	If the above JSON did not give it away, the API exposes hypermedia to alter and interact with the state of the backend. Exactly how will be discussed later, for now the most important aspect of the request is that we have two endpoints to interact with the coin-flip game. We can either
+
+		1. Play the game via the POST method
 		2. Get the result of a specific coin-flip game.
 
 	As mentioned before, this game is stateless, meaning once a client POST's or rather plays the coin-flip game, the result of the game is immediately calculated, saved and an ID linking to the result is returned for the client to consume via the second action `GET /game/coin-flip/{id}. An example finished game could be the following json
-
-	*Response simplified for brevity* 
 
 	```json
 	{
@@ -66,6 +64,8 @@ The backend is the single source of truth in the form of a REST API which the fr
   		"links": [ { "rel": [ "self" ], "href": "/game/coin-flip/1" } ]
 	}
 	```
+
+    *Simplified response for a specific coin-flip game.*
 	
 	Here after sending a `POST` request with the body `{ "choice": "HEADS", "betAmount": 100 }`, the user lost as the result was "TAILS".
 
@@ -91,6 +91,8 @@ public class AuthService {
     //...
 }
 ```
+
+*Simplified implementation of the `AuthService` class.*
 
 Another key aspect of using Quarkus is the ease of creating a web application, specifically selecting which endpoints or resources should be exposed with what method.
 
@@ -121,7 +123,9 @@ public class AuthResource {
         //...
     }
 }
-``` 
+```
+
+*Simplified implementation of the `AuthResource` class.*
 
 Simple annotations define 
 
@@ -150,6 +154,8 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
     }
     ```
 
+    *Example properties in Siren.*
+
 2. Links
 
     The `links` keyword is a required keyword. A staple of hypermedia it enable the discoverability and relational nature of APIs. A given resource is required to contain the `self` relation with an `href` to the very URL or resource the client is viewing. Other common relations are, for pagination, "prev" or "next", as well as other closely related resources.
@@ -161,6 +167,8 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
         ]
     }
     ```
+
+    *Example self link in Siren.*
 
 3. Entities
 
@@ -190,6 +198,8 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
         ]
     }
     ```
+
+    *Example users entities list in Siren.*
 
 4. Actions
 
@@ -223,7 +233,9 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
     }
     ```
 
-    The resulting generic request for an action would be 
+    *Example "create-user" action in Siren.*
+
+    The resulting generic request for an action would be
 
     ```sh
     curl -X '{action method}' \
@@ -234,6 +246,8 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
         }' \
         {action href}
     ```
+
+    *Generic `curl` command when parsing Siren actions.*
 
     For the specific "create-user" action above the request would be
 
@@ -246,6 +260,8 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
         }' \
         /users
     ```
+
+    *Example "create-user" action as a `curl` command.*
 
 5. Class
 
@@ -267,6 +283,8 @@ public class GetRootResponse {
 }
 ```
 
+*The `GetRootResponse` class implementation.*
+
 Notice we link to three resources: "users", "auth" and "game", each with their own path "/users" "/auth" and "/game". To properly serialize this response we use Siren4Js - admittedly slow - `ReflectingConverter` to convert the Java object into a Siren `Entity`.
 
 ```java
@@ -278,8 +296,9 @@ public class RootController {
         return ReflectingConverter.newInstance().toEntity(rootResponse);
     }
 }
-
 ```
+
+*The `RootController` class implementation`.*
 
 And finally our `RootResource` which defines our endpoint simply calls the controller
 
@@ -298,6 +317,8 @@ public class RootResource {
 }
 ```
 
+*The `RootResource` java class implementation.*
+
 Performing a GET request on the `http://localhost:8080/` results in the following Siren JSON
 
 ```json
@@ -314,6 +335,8 @@ Performing a GET request on the `http://localhost:8080/` results in the followin
     ]
 }
 ```
+
+*The Siren response from `GET /`.*
 
 Notice the `class` keyword defined is the `entityClass` value "root" and the links are created one to one as they are defined in the annotation of the `GetRootResponse` class.
 
@@ -339,11 +362,89 @@ Entity result = EntityBuilder.newInstance()
         .build();
 ```
 
+*Example of the Siren4J `LinkBuilder` to construct hypermedia during runtime.*
+
 #### Database Integration
-*hibernate ORM and postgresql*
+
+To save the state of our application, users, and user's games we utilize a PostgreSQL database. We chose PostgreSQL as it is fast and easy to use and some of us have previous experience with this database type. However, the exact database type is redundant as we use Hibernate to interact with the database. Hibernate is an object to relational mapping (ORM) framework which allows us to define Java classes (instantiated as objects) and convert them to database entities.
+
+A simple example is the following `CoinFlipGame` entity class
+
+```java
+@Entity
+@Table(name = "coin-flip-game")
+public class CoinFlipGame extends PanacheEntity {
+    private CoinFlipState choice;
+    private CoinFlipState result;
+    private Long betAmount;
+    private CoinFlipGameResult gameResult;
+
+	//...
+}
+```
+
+*Simplified implementation of the `CoinFlipGame` class.*
+
+The class is annotated with the `@Entity` jakarta persistence annotation to signal that this class is an entity and must be stored in our database. We also specify the table name and optionally in the `@Table` annotation one could also specify the schema if desired. The `CoinFlipGame` entity class extends the Hibernate PanacheEntity. This gives many quality of life methods for manipulating a single object/entity or fetching multiple from the database. Functions we have utilized include `findById(...)`, `persist()` and `delete()`.  The general database table constructed from the `CoinFlipGame` entity will look like the following:
+
+|  ID | choice | result | betAmount | gameResult |
+| --- | ------ | ------ | --------- | ---------- |
+|  1  | TAILS  | HEADS  | 100       | USER_LOSE  |
+|  2  | HEADS  | HEADS  | 150       | USER_WIN   |
+| ... | ...    | ...    | ...       | ...        |
+
+*Example database table for the `CoinFlipGame` entity.*
+
+By using the Hibernate ORM framework we avoid having to manually handle serialization and deserialization with SQL to the PostgreSQL database. Hibernate is almost entirely database agnostic meaning we can easily switch our database for another type without sweeping changes to our implementation.
 
 #### Business Logic Implementation
-*business logic separation, service classes*
+*business logic separation, service classes.*
+
+The general structure of our backend application is by domain. We organize Java classes by their domain instead of the classic "Model View Controller" (MVC) file structure. We believe this allows for better maintainability for future changes. Instead of having too look through a "service" folder with 20 different service classes to find the `TokenService`, instead since this class is related to the "auth" domain it resides in the "auth" folder.
+
+The following is a snippet of our file structure utilizing the domain organization
+
+```
+...
++-- csdg8
+    +-- auth
+    |   +-- AuthController.java
+    |   +-- AuthResource.java
+    |   +-- AuthService.java
+    |   +-- dto
+    |   |   +-- CreateTokenRequest.java
+    |   |   +-- CreateTokenResponse.java
+    |   |   +-- GetAuthResponse.java
+    |   |   +-- RefreshAccessTokenRequest.java
+    |   |   +-- RefreshAccessTokenResponse.java
+    |   +-- TokenService.java
+    +-- user
+    |   +-- dto
+    |   |   +-- CreateUserRequest.java
+    |   |   +-- GetCollectionUserResponse.java
+    |   |   +-- GetUserResponse.java
+    |   +-- UserController.java
+    |   +-- User.java
+    |   +-- UserResource.java
+    |   +-- UserService.java
+    |
+    ...
+```
+
+*Snippet of the backend file structure showing its organization by the domains "auth" and "user".*
+
+To further simplify new features or changes our general class hierarchy is as follows
+
+1. Resource
+2. Controller
+3. Service
+4. Business Logic
+
+The resource classes only have direct interaction with a single controller in the same domain or subdomain. A controller only has direct interaction with resources and service classes. The service classes may interact with multiple controllers and services and finally the business logic, in our case the game logic, may only interact with other business logic classes or preferrably a single service class.
+
+Another feature of this model is our separation of DTOs from implementation classes. None of the API responses return a class that is directly used in a service or in business logic. Instead, they are mapped to a DTO to both shield the actual business logic from the web application framework and vice versa but also to limit accidentally exposing sensitive information, like passwords for returned user objects.
+
+A further improvement to this structure would be, in the same vein as our DTOs, shielding the service and business logic from our database. This would allow a, not-so, "hot-swap" of frameworks or database fully isolating the API from the business logic and service, and the database.
 
 #### Security Implementation
 *quarkus security with rolesallowed, 401 vs 403.*
