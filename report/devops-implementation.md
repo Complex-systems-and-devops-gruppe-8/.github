@@ -15,14 +15,14 @@
 ##### Testing Pipeline
 
 #### Containerization
-
+Containerization is a lightweight form of virtualization that packages an application and its dependencies into a single, portable unit called a container. This approach allows applications to run consistently across various environments, from development to production, without being affected by differences in underlying infrastructure. Containers are isolated from each other and the host system, ensuring that they operate independently and securely. This technology streamlines the development and deployment process, enabling faster iterations and more reliable software delivery.
 ##### Docker Implementation
-**Docker** is used to host and build the final application that **Quarkus** produces, both for local development and cloud deployment. This approach ensures that the **production environment** closely resembles the **development environment**, minimizing discrepancies and potential issues.
+**Docker** is used to host and build the final application that **Quarkus** builds, both for local development and cloud deployment. This approach ensures that the **production environment** closely resembles the **development environment**, minimizing discrepancies and potential issues.
 
-By using Docker, developers can create a **consistent** and **isolated environment** for their applications, which simplifies the deployment process and enhances reliability across different stages of the software lifecycle.
+By using Docker, we can create a **consistent** and **isolated environment** for our application, which simplifies the deployment process and enhances reliability across different stages of the softwares lifecycle.
 
 ##### Container Registry
-For hosting the Docker images in the cloud, we utilize **Google Cloud's Artifact Registry**. This service provides a **centralized location** for storing and managing build artifacts and dependencies, which is crucial for maintaining a streamlined and integrated development workflow.
+For hosting the Docker container in the cloud, we utilize **Google Cloud's Artifact Registry**. This service provides a **centralized location** for storing and managing build artifacts and dependencies, which is crucial for maintaining a streamlined and integrated development workflow.
 
 Given that our final deployment is hosted on **Google Cloud Run**, using Artifact Registry aligns perfectly with our infrastructure, ensuring **seamless integration** and **efficient management** of our container images.
 
