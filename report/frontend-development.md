@@ -27,4 +27,6 @@ In this project, Reacts built in state management hooks are used. UseNavigation 
 
 #### Framework Selection Rationale
 
+#### Development Environment Setup
+
 #### Project Structure
