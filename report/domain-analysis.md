@@ -18,6 +18,7 @@ flowchart TD
     User -->|Show Outcome| ShowOutcome
     
     subgraph GamblingWebsite## Use Cases & Stories
+    end
 ```
 
 **Use Cases**
