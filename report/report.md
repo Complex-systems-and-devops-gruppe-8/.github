@@ -202,6 +202,7 @@ A key principle in DevOps is the ability to act based on metrics. To do this we 
 We have also looked into setting up a centralized logging system, but due to time constraints were unable to implement it in time for the writing of this report.
 
 Another clear improvement is monitoring if our frontend server is up or overloaded.
+
 ### 7. Conclusion
 
 #### Project Outcomes
