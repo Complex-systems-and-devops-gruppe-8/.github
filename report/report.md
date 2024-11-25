@@ -676,9 +676,11 @@ The service classes valideates the business logic. This includes vertification o
 The testing strategy was formalized during the project and is consistently applied to new code. Earlier parts of the project may deviate due to the absence of a defined strategy at the time. The CoinFlip test classes is the most modern thereby reflecting our testing strategy as the most recent iteration.
 
 #### OpenAPI documentation
+
 Our backend uses OpenAPI documentation to provide a clear, standardized description of all exposed REST API endpoints. This documentation is automatically generated and served using the quarkus-smallrye-openapi library, which integrates seamlessly with our Quarkus framework. By leveraging OpenAPI, we ensure that both internal and external developers have access to a comprehensive, up-to-date overview of our API.
 All API endpoints, including their HTTP methods (GET, POST, etc.), paths, request parameters, and response formats, are automatically documented based on annotations in the codebase.
 For example:
+
 ```java
 
 @Path("/game/coin-flip")
@@ -692,6 +694,7 @@ public class CoinFlipResource {
     }
 }
 ```
+
 This defines a POST endpoint, /game/coin-flip, which consumes and produces JSON. Quarkus uses this metadata to populate the OpenAPI documentation.
 
 The OpenAPI specification is made available at the endpoint:
