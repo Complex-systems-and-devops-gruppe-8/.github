@@ -11,7 +11,7 @@
 | **Kevin Wang Højgaard**         | *s195166*      |
 | **Sebastian Halfdan Lauridsen** | *s215769*      |
 
-The frontend can be found in this projects "backend" repository: https://github.com/Complex-systems-and-devops-gruppe-8/frontend
+The frontend can be found in this projects "frontend" repository: https://github.com/Complex-systems-and-devops-gruppe-8/frontend
 
 The backend can be found in this projects "backend" repository: https://github.com/Complex-systems-and-devops-gruppe-8/backend
 
