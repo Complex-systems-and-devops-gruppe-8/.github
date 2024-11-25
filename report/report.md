@@ -900,12 +900,15 @@ As mentioned in the Container Registry chapter, the deployment of the backend is
 
 A runner/account in Azure's IAM is required, but creating one requires access to Microsoft Entra ID, formerly known as Azure Active Directory, which students don't have. Instead of dealing with this complexity and risking losing access after further development, we decided to use Google Cloud, which offers us full control over the entire cloud environment. And it is free to use 
 
-In our cloud setup, we have the following elements which are distributed over GitHub(GH) and the Google Cloud Platform(GCP):
-- GCP: **SQL Instances** to host our quarkus PostgreSQL database instance.
-- GCP: **Artifact Registry** to host our Docker container.
-- GCP: **Cloud Run** to deploy our container and expose it to the web.
-- GCP: **Identity and Access Management (IAM)** to create principals and service accounts with the proper access levels, ensuring we adhere to best practices for cybersecurity.
-- GH: **Security - Secrets and variables**: To ensure that no API keys or credentials are leaked, we use Repository Secrets. We have decided to store our secrets in GitHub to seperate our configuration from our deployment. 
+In our cloud setup, we have the following elements:
+###### Google Cloud Platform (GCP) Components
+- **SQL Instances**: Host our Quarkus PostgreSQL database instance.
+- **Artifact Registry**: Store our Docker containers.
+- **Cloud Run**: Deploy our containerized application and expose it to the web.
+- **Identity and Access Management (IAM)**: Manage principals and service accounts with the proper access levels, ensuring adherence to best practices for cybersecurity.
+
+###### Github (GH) Components
+- **Security - Secrets and Variables**: Store API keys and credentials securely using Repository Secrets. We have chosen to store our secrets in GitHub to separate our configuration from our deployment.
 
 In summary, choosing Google Cloud Platform for our backend deployment has provided us with greater control and integration capabilities, overcoming the limitations we faced with Azure. This setup ensures a secure and scalable environment, supporting our development and deployment needs effectively.
 The pay-as-you-go model of GCP services eliminates the need for significant upfront investments, making it a cost-effective solution. Many of the services we utilize are free of charge under the chosen plans, allowing us to optimize our budget while leveraging advanced cloud capabilities.
