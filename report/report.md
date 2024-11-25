@@ -126,11 +126,9 @@ II. [Implementation and DevOps Practices](#implementation-and-devops-practices)
 
 ### 4. Backend Development
 
-*This chapter will ...*
+The backend is the single source of truth in the form of a REST API, which the frontend can interact with. There are two main areas which are handled by the backend.
 
-The backend is the single source of truth in the form of a REST API which the frontend can interact with. There are two main areas which are backend handle
-
-1. Business logic
+1. Business logic:
     As with any logic handling money or other sensitive data, these operations must be done in an environment where bad actors or clueless users cannot alter the result. Therefore, since we are developing a gambling site, the actual game logic and results are calculated, handled and stored only in the backend. Our backend has API endpoints for playing games for users such as the stateless coin-flip endpoint.
 
     ```json
@@ -193,7 +191,7 @@ The backend is the single source of truth in the form of a REST API which the fr
 	
 	Here after sending a `POST` request with the body `{ "choice": "HEADS", "betAmount": 100 }`, the user lost as the result was "TAILS".
 
-2. Users
+2. Users:
 	The second main area of our API is handling users and authentication. We decided, to challenge ourselves and roll our own authentication and JWT tokens, the exact specifics of the JWT tokens and how they are created and managed will be examined later. In short, if a user wants to play a game they must first be registered and authenticate with a username and password to retrieve a short lived *access-token* (JWT) and a long lived *refresh-token* (UUID). The *access-token* grants the user access to locked endpoints based on the user's assigned roles like playing the coin-flip game and the *refresh-token* allows a user to refresh the *access-token* before it expires to create a new *access-token*. This is to reduce the number of times a user must send their credentials to the backend for increased security. If the *access-token* expires the user must login again with credentials and the same is true for the *refresh-token*.
 
 #### Quarkus Framework Implementation
@@ -282,7 +280,7 @@ We chose Siren as our hypermedia specification, although we also considered HAL 
 
 2. Links
 
-    The `links` keyword is a required keyword. A staple of hypermedia it enable the discoverability and relational nature of APIs. A given resource is required to contain the `self` relation with an `href` to the very URL or resource the client is viewing. Other common relations are, for pagination, "prev" or "next", as well as other closely related resources.
+    The `links` keyword is a required keyword. A staple of hypermedia is that it enables the discoverability and relational nature of APIs. A given resource is required to contain the `self` relation with an `href` to the very URL or resource the client is viewing. Other common relations are, for pagination, "prev" or "next", as well as other closely related resources.
 
     ```JSON
     {
@@ -424,7 +422,7 @@ public class RootController {
 
 *The `RootController` class implementation`.*
 
-And finally our `RootResource` which defines our endpoint simply calls the controller
+And finally, our `RootResource`, which defines our endpoint, simply calls the controller
 
 ```java
 @Path("/")
