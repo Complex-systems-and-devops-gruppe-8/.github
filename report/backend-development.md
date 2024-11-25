@@ -511,11 +511,320 @@ Once the JWT token is generated and signed it is returned to the user. When the 
 
 As mentioned earlier we utilize a access-token (JWT) and refresh-token pair. With the access-token being short-lived and the refresh-token being long lived. The refresh-token is a simple generated UUID and the backend keeps track of which UUIDs it generates. A future improvement will be storing the list of these generated UUIDs in persistent storage instead of in-memory as it is now. If the server terminates for whatever reason the list of valid refresh-tokens is lost and all users must re-login to get a new refresh-token. The access-token should not be persisted as it is assumed, because it is cryptographically signed, that it is always valid if it is not expired. To re-emphasize, a JWT token can only come from the server as it is the only one with the *private key*.
 
-#### Testing Strategy
+### Testing Strategy for UserService
 
-##### JUnit Implementation
+The **testing strategy** for the `UserService` class ensures that core functionalities related to user management—such as user validation, adding users, fetching users, and handling user roles and balances—work as expected. It also addresses edge cases and error scenarios, ensuring the service remains reliable and resilient under various conditions.
 
-##### REST-assured Testing
+The strategy includes both unit tests and integration tests to confirm that the system's behavior aligns with business requirements.
 
-#### OpenAPI Documentation
+---
 
+### 1. **JUnit Implementation for User Validation**
+
+- **Valid User Credentials**: Ensures users with correct credentials are validated successfully.
+  - **Test**: `shouldValidateUserWithCorrectCredentials`
+  - **Strategy**: Verify that the system returns the correct user when provided with valid credentials using JUnit.
+
+- **Invalid User Credentials**: Ensures the system handles invalid credentials gracefully.
+  - **Test**: `shouldNotValidateUserWithIncorrectCredentials`
+  - **Strategy**: Verify that incorrect credentials do not authenticate the user using JUnit.
+
+---
+
+### 2. **JUnit Implementation for User Role Management**
+
+- **Fetching Roles for Existing Users**: Confirms that user roles can be retrieved for valid users.
+  - **Test**: `shouldGetUserRoleForExistingUser`
+  - **Strategy**: Verify that the correct roles are returned for valid users using JUnit.
+
+- **Fetching Roles for Non-Existent Users**: Ensures the service does not return roles for non-existent users.
+  - **Test**: `shouldNotGetUserRoleForNonExistentUser`
+  - **Strategy**: Verify that a non-existent user returns an empty set or a proper error using JUnit.
+
+---
+
+### 3. **JUnit Implementation for User Management (CRUD Operations)**
+
+- **Adding New Users**: Ensures the system correctly handles user creation.
+  - **Test**: `shouldAddUserSuccessfully`
+  - **Strategy**: Verify that a new user is added successfully with the correct username and role using JUnit.
+
+- **Handling Existing Users**: Ensures the system throws an appropriate exception when adding an existing user.
+  - **Test**: `shouldThrowUserAlreadyExistsExceptionWhenAddingExistingUser`
+  - **Strategy**: Verify that the service throws a `UserAlreadyExistsException` for duplicate users using JUnit.
+
+- **Invalid Usernames or Passwords**: Tests edge cases with invalid credentials.
+  - **Tests**: `shouldThrowInvalidCredentialsExceptionForInvalidUsername`, `shouldThrowInvalidCredentialsExceptionForInvalidPassword`
+  - **Strategy**: Verify that invalid credentials trigger appropriate exceptions using JUnit.
+
+- **Fetching User by Username**: Ensures users can be retrieved based on their username.
+  - **Test**: `shouldGetUserByUsername`
+  - **Strategy**: Verify that a user can be found and retrieved correctly by username using JUnit.
+
+- **Handling Non-Existent User Fetching**: Ensures the system handles fetching non-existent users appropriately.
+  - **Test**: `shouldThrowUserNotFoundExceptionForNonExistentUser`
+  - **Strategy**: Verify that fetching a non-existent user results in a `UserNotFoundException` using JUnit.
+
+- **Fetching All Users**: Validates that the system returns all users correctly.
+  - **Test**: `shouldGetAllUsers`
+  - **Strategy**: Verify that all users in the system are returned in a list using JUnit.
+
+---
+
+### 4. **JUnit Implementation for User Balance Management**
+
+- **Adding Balance to User**: Ensures user balances can be incremented correctly.
+  - **Test**: `shouldAddBalanceToUser`
+  - **Strategy**: Verify that adding balance to a user's account works correctly using JUnit.
+
+- **Subtracting Balance from User**: Ensures balances can be deducted correctly.
+  - **Test**: `shouldSubtractBalanceFromUser`
+  - **Strategy**: Verify that balance subtraction functions correctly using JUnit.
+
+---
+
+### 5. **JUnit Implementation for Edge Cases and Error Scenarios**
+
+- **User Already Exists Exception**: Ensures the service prevents duplicate user creation.
+  - **Test**: `shouldThrowUserAlreadyExistsExceptionWhenAddingExistingUser`
+  - **Strategy**: Verify that the system throws `UserAlreadyExistsException` for duplicate users using JUnit.
+
+- **Invalid Credentials**: Confirms that invalid credentials trigger appropriate error handling.
+  - **Tests**: `shouldThrowInvalidCredentialsExceptionForInvalidUsername`, `shouldThrowInvalidCredentialsExceptionForInvalidPassword`
+  - **Strategy**: Verify that invalid credentials are handled properly using JUnit.
+
+- **Non-Existent User Fetching**: Ensures requests for non-existent users are handled appropriately.
+  - **Test**: `shouldThrowUserNotFoundExceptionForNonExistentUser`
+  - **Strategy**: Verify that the service handles invalid user requests with proper exception handling using JUnit.
+
+---
+
+### 6. **Transactional and Database Integrity**
+
+- **Database Transactions**: Ensures changes made during tests are rolled back after each test.
+  - **Strategy**: Verify that database changes during tests are rolled back to maintain isolation between tests using JUnit.
+
+---
+
+### 7. **REST-assured Testing for API Endpoints**
+
+- **User Validation Endpoint**: Ensures the API correctly validates users.
+  - **Test**: `shouldValidateUserEndpoint`
+  - **Strategy**: Use REST-assured to verify that the user validation endpoint returns the correct response for valid and invalid credentials.
+
+- **User Role Management Endpoint**: Ensures the API correctly handles user roles.
+  - **Test**: `shouldManageUserRolesEndpoint`
+  - **Strategy**: Use REST-assured to verify that the user role management endpoint returns the correct roles for valid users and handles errors for non-existent users.
+
+- **User Management Endpoints**: Ensures the API correctly handles CRUD operations for users.
+  - **Tests**: `shouldAddUserEndpoint`, `shouldFetchUserEndpoint`, `shouldUpdateUserEndpoint`, `shouldDeleteUserEndpoint`
+  - **Strategy**: Use REST-assured to verify that the user management endpoints correctly handle adding, fetching, updating, and deleting users.
+
+- **User Balance Management Endpoint**: Ensures the API correctly handles user balances.
+  - **Tests**: `shouldAddBalanceEndpoint`, `shouldSubtractBalanceEndpoint`
+  - **Strategy**: Use REST-assured to verify that the user balance management endpoints correctly handle adding and subtracting balances.
+
+---
+
+### 8. **Test Automation and Continuous Integration**
+
+- **Automated Test Suites**: Ensures the user service works as expected across different scenarios using JUnit and REST-assured.
+  - **Strategy**: Integrate automated tests into a CI pipeline to catch issues early.
+
+- **Regression Testing**: Ensures new changes or features do not break existing functionality.
+  - **Strategy**: Rerun tests regularly to maintain application stability.
+
+### OpenAPI Documentation
+
+The **OpenAPI Documentation** provides a comprehensive specification for the API endpoints that interact with the `UserService`. It outlines the available operations for managing users, validating credentials, handling user roles, and updating user balances. This section ensures that the API is clearly defined, making it easy for developers to integrate with the service, understand the request/response formats, and know the expected behavior.
+
+The following is the structure of the OpenAPI documentation for the endpoints related to the `UserService`:
+
+1. **Validate User**
+
+   - **Endpoint**: `/api/users/validate`
+   - **Method**: `POST`
+   - **Description**: Validates the credentials of a user by checking the provided username and password.
+
+   **Request**:
+   ```json
+   {
+     "username": "string",
+     "password": "string"
+   }
+   ```
+
+   **Response**:
+   - `200 OK`: User is validated successfully.
+     ```json
+     {
+       "username": "string",
+       "roles": ["string"]
+     }
+     ```
+   - `401 Unauthorized`: Invalid credentials provided.
+     ```json
+     {
+       "error": "Invalid credentials"
+     }
+     ```
+
+2. **Add User**
+
+   - **Endpoint**: `/api/users`
+   - **Method**: `POST`
+   - **Description**: Creates a new user in the system with the provided username, password, and roles.
+
+   **Request**:
+   ```json
+   {
+     "username": "string",
+     "password": "string",
+     "roles": ["string"]
+   }
+   ```
+
+   **Response**:
+   - `201 Created`: User successfully added.
+     ```json
+     {
+       "username": "string",
+       "roles": ["string"]
+     }
+     ```
+   - `409 Conflict`: User already exists.
+     ```json
+     {
+       "error": "User already exists"
+     }
+     ```
+   - `400 Bad Request`: Invalid credentials or malformed request.
+     ```json
+     {
+       "error": "Invalid credentials"
+     }
+     ```
+
+3. **Get User Roles**
+
+   - **Endpoint**: `/api/users/{username}/roles`
+   - **Method**: `GET`
+   - **Description**: Retrieves the roles associated with a specific user.
+
+   **Request**:
+   - **Path Parameter**:
+     - `username` (string): The username of the user whose roles are to be retrieved.
+
+   **Response**:
+   - `200 OK`: Returns the roles associated with the user.
+     ```json
+     {
+       "roles": ["string"]
+     }
+     ```
+   - `404 Not Found`: User not found.
+     ```json
+     {
+       "error": "User not found"
+     }
+     ```
+
+4. **Get User by ID**
+
+   - **Endpoint**: `/api/users/{userId}`
+   - **Method**: `GET`
+   - **Description**: Fetches the details of a user based on their unique user ID.
+
+   **Request**:
+   - **Path Parameter**:
+     - `userId` (integer): The unique ID of the user to retrieve.
+
+   **Response**:
+   - `200 OK`: Successfully retrieves the user information.
+     ```json
+     {
+       "id": "integer",
+       "username": "string",
+       "roles": ["string"],
+       "balance": "integer"
+     }
+     ```
+   - `404 Not Found`: User not found.
+     ```json
+     {
+       "error": "User not found"
+     }
+     ```
+
+5. **Update User Balance**
+
+   - **Endpoint**: `/api/users/{userId}/balance`
+   - **Method**: `PATCH`
+   - **Description**: Updates the balance of a specific user by adding or subtracting a specified amount.
+
+   **Request**:
+   - **Path Parameter**:
+     - `userId` (integer): The unique ID of the user whose balance is to be updated.
+   - **Body**:
+     ```json
+     {
+       "amount": "integer"
+     }
+     ```
+
+   **Response**:
+   - `200 OK`: Balance updated successfully.
+     ```json
+     {
+       "id": "integer",
+       "username": "string",
+       "balance": "integer"
+     }
+     ```
+   - `404 Not Found`: User not found.
+     ```json
+     {
+       "error": "User not found"
+     }
+     ```
+
+6. **Remove User Balance**
+
+   - **Endpoint**: `/api/users/{userId}/balance`
+   - **Method**: `DELETE`
+   - **Description**: Removes a specified amount from the user's balance.
+
+   **Request**:
+   - **Path Parameter**:
+     - `userId` (integer): The unique ID of the user whose balance is to be updated.
+   - **Body**:
+     ```json
+     {
+       "amount": "integer"
+     }
+     ```
+
+   **Response**:
+   - `200 OK`: Balance updated successfully.
+     ```json
+     {
+       "id": "integer",
+       "username": "string",
+       "balance": "integer"
+     }
+     ```
+   - `404 Not Found`: User not found.
+     ```json
+     {
+       "error": "User not found"
+     }
+     ```
+
+### Response Codes Summary
+
+- `200 OK`: Request successfully completed.
+- `201 Created`: Resource successfully created.
+- `400 Bad Request`: Malformed request or invalid input.
+- `401 Unauthorized`: Invalid credentials provided.
+- `404 Not Found`: Resource (user) not found.
+- `409 Conflict`: Resource already exists (e.g., attempting to create a user that already exists).
