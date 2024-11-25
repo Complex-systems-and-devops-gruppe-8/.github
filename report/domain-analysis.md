@@ -4,6 +4,7 @@
 ### 2. Domain Analysis
 
 #### User Stories and Requirements
+
 ## Use Cases & User Stories
 
 The project has not fundamentally changed since the previous delivery, meaning there haven't been any changes to our requirements, use cases or user stories. We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **Game Selection & Play,** to illustrate the system interactions.
@@ -72,6 +73,7 @@ The primary use case involves enabling users to play a game and place wagers on 
 **Name:** UC 1.1: Game selection & play
 
 **Scope:**
+
 - Selection of available games
 - User interaction with game features
 - Placing wagers
@@ -89,11 +91,13 @@ The primary use case involves enabling users to play a game and place wagers on 
 - **Payment Provider:** Interested in secure & fast transactions.
 
 **Preconditions:**
+
 - User must have an active account and be signed in.
 - User must have sufficient funds in their account to play (free play if applicable).
 - "The platform must be legal".
 
 **Postconditions:**
+
 - If the user wins, their account balance is updated with the winnings.
 - If the user loses, the wager amount is deducted from their account balance.
 - Game data, including the outcome and amount wagered, is stored in the system for auditing and regulatory purposes.
@@ -184,105 +188,97 @@ A lot of thought has gone into designing the system architecture for the program
 #### Architectural Layers:
 
 1. **Presentation Layer (Frontend):**  
+
   The frontend consistes of the user interface part of the platform, with a focus on giving the user an intuitive experience. The tools that have been used to achieve this include:
+
   - The frontend has been developed with **React**, a modern JavaScript library used to build dynamic and interactive web interface.
   - The integration of **TypeScript** provides the program with type safety, reducing development errors and enhancing maintainability.
   - Navigation is handled with **React Router**, enabling a seamless transition between pages.
   - For the Styling of the program **Tailwind CSS** is used. Tailwind is a utility-first CSS framework that ensures responsive and consistent design across devices.
 
 2. **Business Logic Layer (Backend):**  
+
   The backend is built using **Quarkus**, a cloud-native framework optimized for building lightweight and high-performing Java applications. It The most important business logic, including:
+
   - Secure authentication using **JWT** (JSON Web Tokens) for access and refresh tokens.
   - Modular services handling game logic, user balance management, and transaction workflows.
   - APIs for frontend interaction, designed with REST principles and using Hypermedia formats like **Siren** for enhanced discoverability.
 
 3. **Data Access Layer (Database):**  
+
   Data management is another important part of the program, critical for the platform's integrity, handled by:
+
   - **PostgreSQL**, a powerful relational database for transactional data such as user balances, game outcomes, and transaction records.
   - Integration with **Hibernate**, simplifying database operations and maintaining a clean abstraction between domain models and database schemas.
   - Future enhancements include the implementation of repository patterns for improved data handling and scalability.
 
 
 #### Technical Stack Selection
+
 The technical stack for the project was chosen from the previous experiences of the group members, but also to meet the requirements of a modern, scalable web application. Each component was picked to fit the experience of the group, the performance, reliablity and,alignment with project goals.
 
 #### Frontend:
+
 - **React:** A library used for building interactive and reuseable UI componenets. React supports dynamic updates without requiring a page reload, which makes for a better user experience.
 - **TypeScript:** Provides static type checking, making the codebase more robust and reducing runtime errors.
 - **Vite:** A build tool that offers fast build times and hot-reloading, making the work of the developer easier.
 - **Tailwind CSS:** Simplifies responsive design implementation and ensures a consistent UI experience.
 
 #### Backend:
+
 - **Quarkus:** A Java framework tailored for microservices and cloud-native applications. Its fast startup time and low memory footprint make it ideal for the project.
 - **PostgreSQL:** A reliable and scalable database for handling structured data, ensuring high availability and performance.
 - **Hibernate:** An ORM tool that abstracts database interactions, reducing boilerplate code and enhancing maintainability.
 
 #### DevOps and Deployment:
+
 - **Docker:** Provides the project with consistent development and production environments through containerization.
 - **GitHub Actions:** Used for automating the CI/CD pipeline, ensuring code quality and fast deployment.
 - **Google Cloud & Netlify:** Supports scalable hosting for the backend and seamless deployment of the frontend.
 
 #### Justification:
+
 This stack has been designed to best fit the project's objectives, balancing modern features with stability. The stack supports easy development, ensures system reliability, and provides room for future enhancements, such as the integration of additional games.
 
 ---
 
 
 #### Security Requirements
-Security is a fundamental aspect of the gambling platform, given the sensitive nature of user data, financial transactions, and regulatory compliance requirements. The system must implement robust security measures at every layer to protect against threats and vulnerabilities. The key security requirements for the project include:
 
-#### **Authentication and Authorization**
-   - **Authentication:** 
-     - Use **JWT (JSON Web Tokens)** for access tokens to authenticate user sessions securely.
-     - Implement **refresh tokens** with a limited lifespan to enable seamless re-authentication and enhanced session control.
-   - **Authorization:**
-     - Enforce **role-based access control (RBAC)** to ensure users have access only to resources relevant to their roles (e.g., gambler, system admin).
-     - Validate user permissions for every API request to prevent unauthorized actions.
+In this project, **JWT (JSON Web Tokens)** are used to restrict the amount of time a user can spent before they have to loggin again, this is done to manage user authentication and maintain session control. This approach is essential to ensure security on the site.
 
-#### **Data Protection**
-   - **Encryption:**
-     - Encrypt sensitive data, such as passwords and personal details, using industry-standard algorithms like **bcrypt** for hashing passwords.
-     - Use **TLS (Transport Layer Security)** to secure all data transmissions between the client and server.
-   - **Token Security:**
-     - Ensure tokens are signed using a secure algorithm (e.g., HMAC SHA-256) to prevent tampering.
-     - Store tokens securely on the client-side using **HTTP-only cookies** to minimize exposure to cross-site scripting (XSS) attacks.
+#### Use of JWT Tokens
 
-#### **Secure Payment and Transactions**
-   - Integrate with trusted payment providers to handle financial transactions securely.
-   - Protect payment details and transactions using **PCI-DSS-compliant** standards.
-   - Implement anti-fraud mechanisms to detect and mitigate suspicious activities.
+- **Session Duration:** Each JWT has an expiration time, which decides when a user has to log in again.
+- **Stateless Authentication:** This way the backend doesn't have to store any information, since the JWT contains all the necessary information to authenticate a user.
 
-#### **Game Fairness and Integrity**
-   - Use **Random Number Generators (RNG)** for game outcomes to ensure fairness and transparency.
-   - Protect game logic and results from tampering by validating all computations server-side.
-   - Log game transactions, including bets and outcomes, for auditing and regulatory purposes.
+#### Advantages of Using JWT Tokens
 
-#### **Application Security**
-   - **Input Validation:**
-     - Sanitize and validate all user inputs to prevent injection attacks (e.g., SQL injection, command injection).
-   - **Secure APIs:**
-     - Implement rate-limiting and IP throttling on sensitive endpoints to mitigate brute force and denial-of-service (DoS) attacks.
-     - Require authentication for all API endpoints, except explicitly public ones.
-   - **CORS (Cross-Origin Resource Sharing):**
-     - Configure strict CORS policies to limit access to trusted origins only.
+1. **Efficiency:**  
+   - JWT tokens are stateless, this means that the server doesn't need to maintain session data. This reduces the servers load.
+   - The tokens carries all the required claims (e.g., username, user ID) within the token.
 
-#### **System Monitoring and Incident Response**
-   - Implement logging and monitoring to detect and respond to potential security breaches in real-time.
-   - Store logs securely and ensure they are accessible only to authorized personnel.
-   - Set up alerts for unusual activities, such as repeated failed login attempts or sudden spikes in transaction volumes.
+2. **Security:**  
+   - The use of expiration times limits the duration of exposure if a token is compromised.
+   - Tokens are signed using algorithms like **HMAC SHA-256**, making it impossible to tamper with the token, unless the signing key is exposed.
 
-#### **Regulatory Compliance**
-   - Adhere to legal and regulatory requirements specific to online gambling, such as:
-     - Ensuring **age verification** for all users.
-     - Meeting data protection laws like **GDPR** (General Data Protection Regulation) for user privacy.
-   - Maintain audit trails for all critical activities to ensure compliance and support external audits.
+3. **Flexibility:**  
+   - JWTs can be used across several different services and platforms, enabling easy integration in distributed systems.
+   - Refresh tokens can be implemented to allow users to obtain new access tokens without the need to log in again.
 
-#### **Business Continuity and Disaster Recovery**
-   - Back up all critical data, including user information, transactions, and game logs, in a secure and encrypted format.
-   - Implement redundancy measures to ensure availability during failures or cyberattacks.
-   - Conduct regular penetration testing and vulnerability assessments to identify and address weaknesses.
+#### Disadvantages of Using JWT Tokens
+
+1. **Token Revocation Complexity:**  
+   - Invalidating a token before it expires (in case of user logout), can be challenging, since the server does not store session data.
+   - Implementation of token blacklists can add additional complexity and reduce the "stateless" advantage.
+
+2. **Token Size:**  
+   - JWT tokens can be large due to their payload, which may include claims and metadata. This can slightly increase bandwidth usage.
+
+3. **Security Risks:**  
+   - Attacks can forge valid tokens if the signing key is stolen.
+   - Storing tokens on the client side can expose them to cross-site scripting (XSS) attacks
+
+JWT tokens provide and efficient approach to session management, but must be implemented carefully to avoid the associated risks.
 
 ---
-
-By implementing these security requirements, the platform will not only protect user data and transactions but also ensure compliance with industry standards and regulatory mandates, fostering trust and reliability for all stakeholders.
-
