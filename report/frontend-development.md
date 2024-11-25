@@ -1,4 +1,5 @@
 ### 5. Frontend Development
+
 #### React Application Structure
 
 The project features a React application for the frontend using Typescript. This is designed to provide and engaging and interactive experience for the users. It has a landing page with multiple sections, and navigation to each implemented game. Furthermore it is developed in a modular way, ensuring that scaling the project up and down can be done easily.
