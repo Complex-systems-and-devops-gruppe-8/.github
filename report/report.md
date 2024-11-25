@@ -211,7 +211,7 @@ In our cloud setup, we have the following elements which are distributed over Gi
 - GCP: **Artifact Registry** to host our Docker container.
 - GCP: **Cloud Run** to deploy our container and expose it to the web.
 - GCP: **Identity and Access Management (IAM)** to create principals and service accounts with the proper access levels, ensuring we adhere to best practices for cybersecurity.
-- GH: **Security - Secrets abd variables**: To ensure that no API keys or credentials are leaked, we use Repository Secrets. We have decided to store our secrets in GitHub to seperate our configuration from our deployment. 
+- GH: **Security - Secrets and variables**: To ensure that no API keys or credentials are leaked, we use Repository Secrets. We have decided to store our secrets in GitHub to seperate our configuration from our deployment. 
 
 In summary, choosing Google Cloud Platform for our backend deployment has provided us with greater control and integration capabilities, overcoming the limitations we faced with Azure. This setup ensures a secure and scalable environment, supporting our development and deployment needs effectively.
 The pay-as-you-go model of GCP services eliminates the need for significant upfront investments, making it a cost-effective solution. Many of the services we utilize are free of charge under the chosen plans, allowing us to optimize our budget while leveraging advanced cloud capabilities.
