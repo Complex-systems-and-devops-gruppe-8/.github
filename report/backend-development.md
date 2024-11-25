@@ -552,4 +552,3 @@ The service classes valideates the business logic. This includes vertification o
 The testing strategy was formalized during the project and is consistently applied to new code. Earlier parts of the project may deviate due to the absence of a defined strategy at the time. The CoinFlip test classes is the most modern thereby reflecting our testing strategy as the most recent iteration.
 
 #### OpenAPI documentation
-
