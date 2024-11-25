@@ -552,3 +552,30 @@ The service classes valideates the business logic. This includes vertification o
 The testing strategy was formalized during the project and is consistently applied to new code. Earlier parts of the project may deviate due to the absence of a defined strategy at the time. The CoinFlip test classes is the most modern thereby reflecting our testing strategy as the most recent iteration.
 
 #### OpenAPI documentation
+Our backend uses OpenAPI documentation to provide a clear, standardized description of all exposed REST API endpoints. This documentation is automatically generated and served using the quarkus-smallrye-openapi library, which integrates seamlessly with our Quarkus framework. By leveraging OpenAPI, we ensure that both internal and external developers have access to a comprehensive, up-to-date overview of our API.
+All API endpoints, including their HTTP methods (GET, POST, etc.), paths, request parameters, and response formats, are automatically documented based on annotations in the codebase.
+For example:
+```java
+
+@Path("/game/coin-flip")
+@Produces(Siren4J.JSON_MEDIATYPE)
+public class CoinFlipResource {
+
+    @POST
+    @RolesAllowed("user")
+    public Response play(PlayCoinFlipRequest request) {
+        return this.coinFlipController.play(request);
+    }
+}
+```
+This defines a POST endpoint, /game/coin-flip, which consumes and produces JSON. Quarkus uses this metadata to populate the OpenAPI documentation.
+
+The OpenAPI specification is made available at the endpoint:
+
+* http://localhost:8080/q/openapi
+
+An interactive Swagger UI us also available at:
+
+* http://localhost:8080/q/swagger-ui
+
+By integrating OpenAPI documentation into our backend, we have established a robust and developer-friendly way to manage, explore, and share our API. This not only enhances collaboration but also ensures our API remains well-documented and easy to consume. The use of OpenAPI further supports our project's DevOps practices, enabling automation in testing and deployment workflows.
