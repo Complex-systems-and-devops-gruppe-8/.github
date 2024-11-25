@@ -133,6 +133,28 @@ Simple annotations define
 - the accepted Content-Type for a method via the `@Consumes` annotation and
 - many other handy and useful features.
 
+#### Maven
+
+Before delving deeper into the implementation of the backend we will quickly go over our selected package manager for the backend. *Maven* is a robust build automation and dependency management tool that has become the de facto standard for Java projects. Its XML-based project configuration, exemplified in the Project Object Model (POM) file, provides a comprehensive framework for managing project dependencies, building processes, and project documentation.
+
+Maven's primary advantages over alternative package managers like Gradle or Ant stem from its convention-over-configuration approach and its centralized dependency management system. The tool utilizes a standardized project structure and build lifecycle, significantly reducing the complexity of project configuration while maintaining consistency across different development environments.
+
+The provided POM file demonstrates Maven's sophisticated dependency management capabilities through its structured organization of project elements:
+
+1. Core project information is defined through fundamental coordinates (groupId, artifactId, version)
+2. Properties section manages version numbers and configuration parameters centrally
+3. Dependencies are clearly organized with explicit version management
+4. Build process is configured through a plugin system that handles compilation, testing, and packaging
+
+Maven's repository system represents another significant advantage, offering:
+
+- Centralized artifact storage in local and remote repositories
+- Transitive dependency resolution
+- Version conflict management
+- Efficient dependency caching
+
+The tool's integration with Quarkus, as can be seen in the backend's `pom.xml` file, exemplifies its extensibility through plugins and its ability to support modern development frameworks. The configuration demonstrates Maven's capability to handle complex build requirements, including test execution, code generation, and native image creation, while maintaining a clear and maintainable project structure.
+
 #### REST API Design with Siren Hypermedia
 
 The backend architecture evolved from a basic Level 3 REST implementation utilizing standard HTTP methods (GET, POST, DELETE) to incorporate HATEOAS (Hypermedia as the Engine of Application State) capabilities. This enhancement enables dynamic API navigation through hypermedia controls, where clients discover available resources and operations by traversing links from the root endpoint rather than relying on predefined URL patterns. The hypermedia approach mirrors web browsing behavior, where navigation occurs through semantic controls rather than explicit URL construction. For example, rather than hardcoding paths to submit orders, clients can programmatically follow named links to execute operations. This design pattern eliminates the need for clients to maintain URL knowledge or external API documentation, as the server communicates available state transitions through hypermedia responses. The implementation effectively transforms HTTP interactions from direct URL manipulation to a state machine driven by discoverable, context-aware controls.
