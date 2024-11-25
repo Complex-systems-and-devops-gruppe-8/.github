@@ -113,8 +113,21 @@ The project uses **React** with **TypeScript** as the primary framework and lang
 
 This combination was chosen for its ability to balance development speed, scalability, and code quality, making it an ideal stack for a modern, interactive frontend application.
 
-#### Development Environment Setup
-
 #### Project Structure
 
+##### GitHub Workflow
 
+- **ci.yml**: This file defines the GitHub workflow for building and testing the project before deployment.
+
+###### Source Directory (`src`)
+
+- **Components**: Contains individual React components, each in its own folder.
+- **Pages**: Combines various components into complete pages.
+- **State**: Manages the application's state.
+- **Styling**: Includes `.css` files for styling the application.
+- **Tests**: Contains various test files.
+
+###### Special Files
+
+- **Landingpage.tsx**: A standalone file that imports different components to create the landing page.
+- **Main**: Primarily handles the routing for the application.
