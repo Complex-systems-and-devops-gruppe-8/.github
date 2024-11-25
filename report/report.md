@@ -231,7 +231,7 @@ The project is built with TypeScript, which makes it possible to do static type 
 
 #### Vite Build Tool Implementation
 
-for building the application this project uses Vite. This is a popular build tool with some advantages mainly aimed at ease of use for the developers. The advantages include a really fast development server providing instant updates when changes are made to the code. It supports TypeScript out of the box, which minimized the amount of work developers have to focus on configuring build pipelines. 
+for building the application this project uses Vite. This is a popular build tool with some advantages mainly aimed at ease of use for the developers. The advantages include a really fast development server providing instant updates when changes are made to the code. It supports TypeScript out of the box, which minimizes the amount of work developers have to focus on configuring build pipelines. 
 
 #### State Management
 
@@ -239,13 +239,15 @@ In this project, Reacts built in state management hooks are used. UseNavigation 
 
 In our application, we manage state efficiently using React's useContext in combination with a Provider. This approach centralizes state management, making the application easier to scale, maintain, and extend as the complexity of features grows.
 With this setup:
-State stores the current application data.
-Dispatch handles updates and actions, ensuring predictable and controlled state transitions.
+* State stores the current application data.
+* Dispatch handles updates and actions, ensuring predictable and controlled state transitions.
+
 By wrapping our components in context Providers, any part of the application can access and modify the shared state without the need for cumbersome prop drilling, enhancing the overall developer experience.
 We have implemented specific contexts and providers tailored to key areas of our application:
-Authentication Context: Manages authentication tokens, login status, and user session data.
-User Context: Handles user-specific information, such as profile details or preferences.
-Blackjack Context: Manages the state for our Blackjack game, including game logic, player actions, and dealer interactions.
+* Authentication Context: Manages authentication tokens, login status, and user session data.
+* User Context: Handles user-specific information, such as profile details or preferences.
+* Blackjack Context: Manages the state for our Blackjack game, including game logic, player actions, and dealer interactions.
+
 This modular approach ensures that each context is focused on its specific domain, improving code organization and maintainability. By leveraging useContext and the Provider, we create a robust and scalable foundation for managing complex state transitions and interactions across the application while adhering to React’s functional component paradigm.
 
 #### Security Features
@@ -262,7 +264,23 @@ We perform input validation and sanitization in the frontend to protect our back
 Our frontend exclusively uses HTTPS to ensure that all data transmitted between the client and the server is encrypted. This protects sensitive information, such as authentication tokens and user data, from interception or tampering during transmission, maintaining the integrity and confidentiality of the communication.
 
 #### Package Management
+In our project, we utilize npm (Node Package Manager) as the primary package manager for frontend development. npm is a powerful tool that simplifies the process of managing dependencies and libraries required for the project. By specifying the necessary packages in the package.json file, npm allows us to efficiently install, update, and manage all dependencies in a structured and repeatable manner.
 
+One of the key advantages of npm is its ability to define and execute custom scripts. These scripts streamline various development and build tasks. For example:
+
+npm run dev: This command is configured to start a development server, providing a live-reloading environment that makes it easier to test and iterate on frontend code during development.
+npm run build: This command specifies the steps required to build the production-ready version of the frontend application. It typically compiles, minifies, and optimizes the code for deployment.
+Additionally, npm enhances the security of our project by providing the npm audit tool. This tool scans the project dependencies for known vulnerabilities and security threats. By running npm audit, we can:
+
+ * Detect security issues in real-time across all installed libraries.
+* Receive detailed reports on the nature of vulnerabilities, their severity, and potential fixes.
+* Apply automated patches for certain vulnerabilities using npm audit fix.
+
+By regularly auditing our dependencies, we ensure that our project remains secure and compliant with best practices, reducing the risk of threats from third-party libraries.
+
+In addition to managing dependencies and automating tasks, npm also enables us to run custom test suites. For instance, by specifying test commands in package.json, such as npm run test, we can execute different testing frameworks or tools to ensure the quality and stability of our code.
+
+By leveraging npm for package management, task automation, and security auditing, we ensure that our frontend development workflow is consistent, efficient, and secure. It simplifies collaboration across the team, as all required dependencies and commands are easily accessible, while safeguarding the project against potential vulnerabilities.
 #### Framework Selection Rationale
 
 The project uses **React** with **TypeScript** as the primary framework and language for the frontend, paired with **Vite** as the build tool. This selection is based on the following considerations:
@@ -330,6 +348,13 @@ Our project structure is meticulously designed to adhere to React best practices
 ##### Google Cloud Setup
 
 ##### Netlify Frontend Deployment
+In our project, we utilize Netlify as the platform for hosting and deploying our frontend application. Netlify offers an automated and seamless deployment workflow by integrating directly with our GitHub repository. Every time changes are pushed to the main branch, Netlify automatically pulls the latest code, runs the specified build command (npm run build), and deploys the application to its globally distributed Content Delivery Network (CDN).
+
+As part of this automated process, Netlify provides real-time feedback on the deployment status. If the npm run build command succeeds, the application is immediately deployed, and the live site is updated. If the build fails, Netlify generates detailed logs, making it easy to identify and resolve any issues. After deployment, Netlify confirms whether the site was successfully deployed, ensuring full transparency in the deployment process.
+
+In addition, for every pull request, Netlify runs a Lighthouse audit to evaluate the performance, accessibility, best practices, and SEO of the site. This feature provides a clear score and actionable insights, helping us continuously optimize the application before merging changes into the main branch. By catching potential issues at the pull request level, we ensure that only high-quality updates make it into production.
+
+Netlify’s integration with GitHub and automated workflows significantly streamline our deployment process. With features like automatic builds, deployment status notifications, and Lighthouse audits on pull requests, we are able to maintain a high-quality frontend application. Its global CDN ensures that the deployed site loads quickly for users worldwide, further enhancing the user experience. By leveraging Netlify, we have a reliable, efficient, and developer-friendly solution for managing our frontend deployment pipeline.
 
 #### Monitoring and Maintenance
 
