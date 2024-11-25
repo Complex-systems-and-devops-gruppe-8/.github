@@ -7,7 +7,8 @@
 
 ## Use Cases & User Stories
 
-The project has not fundamentally changed since the previous delivery, meaning there haven't been any changes to our requirements, use cases or user stories. We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **Game Selection & Play,** to illustrate the system interactions.
+The project has not fundamentally changed since the previous delivery, meaning there haven't been any changes to our requirements, use cases or user stories.
+We used our user stories (US) to derive the corresponding use cases (UC). A use case diagram was created for the first use case, **Game Selection & Play,** to illustrate the system interactions.
 
 ### Main – UC 1.1. Diagram
 
@@ -23,7 +24,8 @@ flowchart TD
 ```
 
 **Use Cases**
-describe the interactions between a user (or another system) and the system itself to achieve a specific goal. They focus on what the system should do and define the steps involved in achieving the user's objectives, including different success and failure scenarios.
+describe the interactions between a user (or another system) and the system itself to achieve a specific goal.
+They focus on what the system should do and define the steps involved in achieving the user's objectives, including different success and failure scenarios.
 
 **User Stories** are short, simple descriptions of features told from the perspective of the end-user. They typically follow the format: "As a *type of user*, I want *goal* so that *benefit*." User stories help capture user needs and provide a foundation for creating detailed use cases.
 
@@ -64,7 +66,10 @@ As a **Gambler**:
 
 - I can participate in gambling activities seamlessly.
 
-The primary use case involves enabling users to play a game and place wagers on it. Please note that elements marked as "Example" may not be included in our version of the program due to scope limitations. Subsequent use cases will include brief summaries, as the main flow has yet to be finalized for the sub use cases. All these use cases (including the main one) are **WIP** and will be subject to change.
+The primary use case involves enabling users to play a game and place wagers on it.
+Please note that elements marked as "Example" may not be included in our version of the program due to scope limitations.
+Subsequent use cases will include brief summaries, as the main flow has yet to be finalized for the sub use cases.
+All these use cases (including the main one) are **WIP** and will be subject to change.
 
 ### UC 1.1: Game Selection & Play
 
@@ -148,7 +153,6 @@ The primary use case involves enabling users to play a game and place wagers on 
 
 **Frequency of Occurrence:** Every time the user wants to play a game.
 
----
 
 ### US 1.2
 
@@ -161,7 +165,6 @@ As a gambler:
 - Winnings are credited to the user’s account, and losses are debited.
 - Storing game data for auditing, fairness checks, and regulatory compliance.
 
----
 
 ## Standalone Use Cases
 
@@ -183,7 +186,10 @@ Use cases without a corresponding user story.
 
 #### System Architecture Overview
 
-A lot of thought has gone into designing the system architecture for the program. The architecture has been designed to ensure scalability, reliablity and to rely on DevOps principles. Out approach enables efficient development, maintenance, and provides flexibility for future updates. A detailed breakdown of the different architectural layers is provided below:
+A lot of thought has gone into designing the system architecture for the program.
+The architecture has been designed to ensure scalability, reliablity and to rely on DevOps principles.
+Out approach enables efficient development, maintenance, and provides flexibility for future updates.
+A detailed breakdown of the different architectural layers is provided below:
 
 #### Architectural Layers:
 
@@ -215,7 +221,8 @@ A lot of thought has gone into designing the system architecture for the program
 
 #### Technical Stack Selection
 
-The technical stack for the project was chosen from the previous experiences of the group members, but also to meet the requirements of a modern, scalable web application. Each component was picked to fit the experience of the group, the performance, reliablity and,alignment with project goals.
+The technical stack for the project was chosen from the previous experiences of the group members, but also to meet the requirements of a modern, scalable web application.
+Each component was picked to fit the experience of the group, the performance, reliablity and,alignment with project goals.
 
 #### Frontend:
 
@@ -239,8 +246,6 @@ The technical stack for the project was chosen from the previous experiences of 
 #### Justification:
 
 This stack has been designed to best fit the project's objectives, balancing modern features with stability. The stack supports easy development, ensures system reliability, and provides room for future enhancements, such as the integration of additional games.
-
----
 
 
 #### Security Requirements
@@ -280,5 +285,3 @@ In this project, **JWT (JSON Web Tokens)** are used to restrict the amount of ti
    - Storing tokens on the client side can expose them to cross-site scripting (XSS) attacks
 
 JWT tokens provide and efficient approach to session management, but must be implemented carefully to avoid the associated risks.
-
----
