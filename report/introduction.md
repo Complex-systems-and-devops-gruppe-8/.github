@@ -2,11 +2,9 @@
 
 #### 1.1 Project Scope and Objectives
 
-The goal of this project is to design and implement a full-stack gambling platform, with games such as roulette, and coin flip. 
-The project includes the development of both a backend, a frontend, and the use of DevOps practices to improve the development and deployment processes.
+The goal of this project is to design and implement a full-stack gambling platform, with games such as roulette, and coin flip, with a focus on creating a secure and user-friendly experience. It will involve building both backend and frontend components using modern frameworks and tools, while integrating DevOps practices for continues integration and deployment.
 
-The project will provide an secure and intuitive user experience. Software using modern frameworks and tools will be implemented. 
-The project will be implemented with an emphasis on using the practices of DevOps to enable continous integration and deployment.
+The scope includes backend architechture, API development, frontend design, security measures, and cloud deployment. However, it excludes marketing strategies, and legal compliance beyond technical implementation. The objective is to deliver a reliable platform with efficient DevOps integration and an engaging user interface.
 
 #### 1.2 Problem Statement and Solution Overview
 
@@ -18,6 +16,8 @@ In this project several challenges had to be overcome, these include:
 - **Security:** Preventing exploitation of tokens, to prevent potential threats.
 - **Maintainability:** Creating a system that can be updated and improvied without any significant overhead.
 - **Deployment:** Developing a deployment process with frequent updates without downtime
+
+Addressing these challenges is vital to delivering a reliable and engaging platform.
 
 ##### Solution Overview:
 
@@ -35,17 +35,10 @@ These approaches both addresses the technical challenges, and ensures that the p
 
 #### 1.3 Methodology
 
-The project follows the Agile methodology of iterative development in a manner that allows for easier addaptation to changes in requirements and the users needs. 
-The process initiates with comprehensive requirements gathering and analysis, where user stories and use cases are written in detail to ensure alignment with end-user expectations. 
-This approach promotes clarity of purpose for the project and lays a solid foundation for later phases in development.
+This project follows a Kanban methodology using GitHub Issues and Projects to emphasize continuous improvement and flexibility in task management. This methodology is based on a "pull system," where work items (Issues) are pulled from a backlog into a steady flow of work, rather than being pushed through the process.
 
-The development phase involves the creation of both the frontend and backend, each designed with scalability, and maintainability in mind. 
-The structure of the frontend is component-based, built with React and TypeScript, promoting reusability. This makes it easier for developers to update and extend the user interface every time something a new feature is implemented. 
-The backend uses a layered architecture based on Quarkus, which isolates concerns into three layers for business logic, API endpoints, and data management. 
-This makes the code cleaner and easier to scale, making it easier to integrate further features.
+Kanban is a methodology that focuses on visualizing work, limiting work-in-progress, and maximizing efficiency. It uses a Kanban board (GitHub Projects Board) to represent the workflow of our project. For our board, we chose to go with the columns: Backlog, Ready, In Progress, In Review and Done. Each Task/Issue is then represented as a card that can move through each column, providing a clear visual representation of the project's status.
 
-DevOps practices are integrated into the project to improve the development and deployment processes. Continuous integration and deployment pipelines will be implemented with the help of GitHub Actions where code builds, testing, and deployments are automated. It minimizes manual labour, reduces the possibilities of human errors, and speeds up the release cycle. Docker is used for containerization, which maintains the consistency of the environments throughout the development, testing, and production stages, enhancing reliability and simplifying the deployment process.
+Another key feature of Kanban is the limit you set on the In Progress column. This helps the team focus on completing tasks before starting new ones, reducing multitasking and improving efficiency. The size of the In Progress column is usually set to the teams size plus one. This allows each team member to focus on one task while providing a little flexibility for handling bottlenecks. Since Kanban does not prescribe specific roles or iterations, it is highly adaptable and fits well into our team structure.
 
-The deployment strategy adopted here is cloud-based, with the backend deployed to Google Cloud, and the frontend hosted on Netlify.
-
-By integrating these methodologies, the project ensures a smooth development process, that's responsive to change.
+Integrating Kanban with DevOps enhances workflow efficiency and flexibility by using a pull system and visual task management. This aligns with DevOps principles like CI/CD, ensuring a seamless workflow. This approach not only improves task management but also supports continuous improvement and adaptability, key aspects of both Kanban and DevOps.
