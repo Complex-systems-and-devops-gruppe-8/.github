@@ -115,6 +115,8 @@ This combination was chosen for its ability to balance development speed, scalab
 
 #### Project Structure
 
+Our project structure is meticulously designed to adhere to React best practices.
+
 ##### GitHub Workflow
 
 - **ci.yml**: This file defines the GitHub workflow for building and testing the project before deployment.
