@@ -39,55 +39,49 @@ I. [Analysis](#analysis)
 2. [Domain Analysis](#domain-analysis)
    - [User Stories and Requirements](#user-stories-and-requirements)
    - [System Architecture Overview](#system-architecture-overview)
+   - [Architectural Layers](#architectural-layers)
    - [Technical Stack Selection](#technical-stack-selection)
    - [Security Requirements](#security-requirements)
 
-3. [Technical Foundation](#technical-foundation)
-   - [Framework Selection Rationale](#framework-selection-rationale)
-   - [Development Environment Setup](#development-environment-setup)
-   - [Project Structure](#project-structure)
-
 II. [Implementation and DevOps Practices](#implementation-and-devops-practices)
 
-4. [Backend Development](#backend-development)
+3. [Backend Development](#backend-development)
    - [Quarkus Framework Implementation](#quarkus-framework-implementation)
+   - [Maven](#maven)
    - [REST API Design with Siren Hypermedia](#rest-api-design-with-siren-hypermedia)
    - [Database Integration](#database-integration)
    - [Business Logic Implementation](#business-logic-implementation)
    - [Security Implementation](#security-implementation)
      - [JWT Authentication](#jwt-authentication)
    - [Testing Strategy](#testing-strategy)
-     - [JUnit Implementation](#junit-implementation)
-     - [REST-assured Testing](#rest-assured-testing)
    - [OpenAPI Documentation](#openapi-documentation)
 
-5. [Frontend Development](#frontend-development)
+4. [Frontend Development](#frontend-development)
    - [React Application Structure](#react-application-structure)
+   - [Key Sections and Features](#key-sections-and-features)
+   - [Navigation and Routing](#navigation-and-routing
    - [TypeScript Integration](#typescript-integration)
    - [Vite Build Tool Implementation](#vite-build-tool-implementation)
    - [State Management](#state-management)
-   - [Component Architecture](#component-architecture)
    - [Security Features](#security-features)
-     - [Token Security Implementation](#token-security-implementation)
    - [Package Management](#package-management)
+   - [Framework Selection Rationale](#framework-selection-rationale)
+   - [Project Structure](#project-structure)
 
-6. [DevOps Implementation](#devops-implementation)
+5. [DevOps Implementation](#devops-implementation)
    - [Version Control Practices](#version-control-practices)
      - [Git Workflow](#git-workflow)
      - [GitHub Integration](#github-integration)
-   - [Continuous Integration/Continuous Deployment](#continuous-integrationcontinuous-deployment)
-     - [GitHub Actions Configuration](#github-actions-configuration)
-     - [Build Server Setup](#build-server-setup)
-     - [Testing Pipeline](#testing-pipeline)
+   - [Testing Pipeline](#testing-pipeline)
    - [Containerization](#containerization)
      - [Docker Implementation](#docker-implementation)
      - [Container Registry](#container-registry)
    - [Cloud Deployment](#cloud-deployment)
-     - [Google Cloud Setup](#google-cloud-setup)
+     - [Google Cloud Backend Deployment](#google-cloud-backend-deployment)
      - [Netlify Frontend Deployment](#netlify-frontend-deployment)
    - [Monitoring and Maintenance](#monitoring-and-maintenance)
 
-7. [Conclusion](#conclusion)
+6. [Conclusion](#conclusion)
    - [Project Outcomes](#project-outcomes)
    - [Future Improvements](#future-improvements)
    - [Lessons Learned](#lessons-learned)
@@ -423,13 +417,6 @@ In this project, **JWT (JSON Web Tokens)** are used to restrict the amount of ti
    - Storing tokens on the client side can expose them to cross-site scripting (XSS) attacks
 
 JWT tokens provide and efficient approach to session management, but must be implemented carefully to avoid the associated risks.
-### 3. Technical Foundation
-
-#### Framework Selection Rationale
-
-#### Development Environment Setup
-
-#### Project Structure
 
 ## II. Implementation and DevOps Practices
 
@@ -1186,7 +1173,7 @@ Github is an extension to the git version control system, that also serves as a 
 
 ##### Build Server Setup
 
-##### Testing Pipeline
+#### Testing Pipeline
 For the backend of the project, we're using a GitHub Actions workflow as a testing pipeline. The workflow is triggered on push events as well as pull request events into the dev and main branch. The **build** part of the workflow has steps included to set up the JDK, generating fake JWT keys and building the project using Maven. Following that there is a **test** job which depends on the build job. This means that the test job will not run if the build job fails. If the build job has succeeded, It will download the build artifacts, set the JWT key environment variables, and run the tests for the backend using Maven. This pipeline runs, as said previously, every time a pull request is made, making it super useful, as it prevents any pull requests that do not either build or pass all the tests from being merged into the dev or main branch. For the frontend we have a similar pipeline that first installs the dependencies using **npm run ci**, builds the solution using **npm run build**, and runs the tests using **npm run test**.
 
 #### Containerization
